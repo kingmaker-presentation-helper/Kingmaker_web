@@ -1,5 +1,44 @@
 (function ($) {
     "use strict";
+    
+    $(document).ready(function() {
+        let wavesurfer = WaveSurfer.create({
+            container: '#waveform',
+            waveColor: 'violet',
+            progressColor: 'purple',
+            barWidth: 3, // 막대의 너비 설정
+            barHeight: 2, // 막대의 높이 배수 설정
+        });
+    
+        let mediaRecorder;
+        let audioChunks = [];
+    
+        $('#recordButton').click(function() {
+            if (!mediaRecorder || mediaRecorder.state === 'inactive') {
+                navigator.mediaDevices.getUserMedia({ audio: true })
+                    .then(stream => {
+                        mediaRecorder = new MediaRecorder(stream);
+                        mediaRecorder.start();
+                        mediaRecorder.ondataavailable = event => {
+                            audioChunks.push(event.data);
+                        };
+                        mediaRecorder.onstop = () => {
+                            const audioBlob = new Blob(audioChunks);
+                            const audioUrl = URL.createObjectURL(audioBlob);
+                            wavesurfer.load(audioUrl);
+                            audioChunks = [];
+                        };
+                    });
+            } else {
+                mediaRecorder.stop();
+            }
+        });
+    });
+
+
+
+
+    
 
     // Spinner
     var spinner = function () {
