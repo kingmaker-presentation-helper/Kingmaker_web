@@ -30,27 +30,10 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
     
-    <style>
-        .scroll-container {
-            overflow-x: auto;
-            white-space: nowrap;
-            width: 100%;
-        }
-    
-        .scroll-item {
-            display: inline-block;
-            width: 200px;
-            margin-right: 150px; /* Adjust the margin-right for spacing */
-        }
-    
-        .scroll-item img {
-            max-height: 200px;
-            width: auto;
-        }
-    </style>
 </head>
 
 <body>
+    
     <div class="container-xxl position-relative bg-white d-flex p-0">
         <!-- Spinner Start -->
         <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -73,8 +56,8 @@
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">UserName</h6>
-                        <span>Role</span>
+                        <h6 class="mb-0 userName">UserName</h6>
+                        <span class="role">Role</span>
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
@@ -189,7 +172,7 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">UserName</span>
+                            <span class="d-none d-lg-inline-flex userName">UserName</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">My Profile</a>
@@ -209,7 +192,7 @@
                             <i class="fa fa-chart-line fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">누적 연습 횟수</p>
-                                <h6 class="mb-0">17번</h6>
+                                <h6 class="mb-0 practiceCount">17번</h6>
                             </div>
                         </div>
                     </div>
@@ -218,7 +201,7 @@
                             <i class="fa fa-chart-bar fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">최고 점수</p>
-                                <h6 class="mb-0">89점</h6>
+                                <h6 class="mb-0 topScore">89점</h6>
                             </div>
                         </div>
                     </div>
@@ -227,7 +210,7 @@
                             <i class="fa fa-chart-area fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">총 연습 시간</p>
-                                <h6 class="mb-0">108분</h6>
+                                <h6 class="mb-0 totalPracticeTime">108분</h6>
                             </div>
                         </div>
                     </div>
@@ -236,7 +219,7 @@
                             <i class="fa fa-chart-pie fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">다가오는 발표</p>
-                                <h6 class="mb-0">11월 24일</h6>
+                                <h6 class="mb-0 oncomingPractice">11월 24일</h6>
                             </div>
                         </div>
                     </div>
@@ -402,6 +385,166 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+    
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var database = firebase.database(); // Corrected variable name
+
+        database.ref("test").set({
+            "name": "jihae",
+            "role": "user",
+            "practiceCount": "19번",
+            "topScore": "91점",
+            "totalPracticeTime": "108분",
+            "oncomingPractice": "11월 24일"            
+        });
+        var testRef = database.ref("test");
+
+        // 처음에 한 번 값 불러오기
+        testRef.once("value", (snapshot) => {
+            const data = snapshot.val();
+            
+            // 유저 이름
+            var userNameAll = document.querySelectorAll('.userName');
+            
+            if (userNameAll.length > 0) {
+                userNameAll.forEach(element => {
+                    element.innerText = data['name'];
+                });
+            } else {
+                console.error('No elements found with class "userName"');
+            }
+
+            // 역할
+            var roleAll = document.querySelectorAll('.role');
+            
+            if (roleAll.length > 0) {
+                roleAll.forEach(element => {
+                    element.innerText = data['role'];
+                });
+            } else {
+                console.error('No elements found with class "role"');
+            }
+            
+            // 대시보드 4가지
+            var practiceCountAll = document.querySelectorAll('.practiceCount');
+            
+            if (practiceCountAll.length > 0) {
+                practiceCountAll.forEach(element => {
+                    element.innerText = data['practiceCount'];
+                });
+            } else {
+                console.error('No elements found with class "practiceCount"');
+            }
+
+            var topScoreAll = document.querySelectorAll('.topScore');
+            
+            if (topScoreAll.length > 0) {
+                topScoreAll.forEach(element => {
+                    element.innerText = data['topScore'];
+                });
+            } else {
+                console.error('No elements found with class "topScore"');
+            }
+
+            var totalPracticeTimeAll = document.querySelectorAll('.totalPracticeTime');
+            
+            if (totalPracticeTimeAll.length > 0) {
+                totalPracticeTimeAll.forEach(element => {
+                    element.innerText = data['totalPracticeTime'];
+                });
+            } else {
+                console.error('No elements found with class "totalPracticeTime"');
+            }
+
+            var oncomingPracticeAll = document.querySelectorAll('.oncomingPractice');
+            
+            if (oncomingPracticeAll.length > 0) {
+                oncomingPracticeAll.forEach(element => {
+                    element.innerText = data['oncomingPractice'];
+                });
+            } else {
+                console.error('No elements found with class "oncomingPractice"');
+            }
+        });
+        
+        // 데이터베이스 수정사항 있을 때마다 값 불러오기
+        testRef.on("value", (snapshot) => {
+            const data = snapshot.val();
+
+            // 유저 이름
+            var userNameAll = document.querySelectorAll('.userName');
+
+            if (userNameAll.length > 0) {
+                userNameAll.forEach(element => {
+                    element.innerText = data['name'];
+                });
+            } else {
+                console.error('No elements found with class "userName"');
+            }
+
+            // 역할
+            var roleAll = document.querySelectorAll('.role');
+            
+            if (roleAll.length > 0) {
+                roleAll.forEach(element => {
+                    element.innerText = data['role'];
+                });
+            } else {
+                console.error('No elements found with class "role"');
+            }
+            
+            // 대시보드 4가지
+            var practiceCountAll = document.querySelectorAll('.practiceCount');
+            
+            if (practiceCountAll.length > 0) {
+                practiceCountAll.forEach(element => {
+                    element.innerText = data['practiceCount'];
+                });
+            } else {
+                console.error('No elements found with class "practiceCount"');
+            }
+
+            var topScoreAll = document.querySelectorAll('.topScore');
+            
+            if (topScoreAll.length > 0) {
+                topScoreAll.forEach(element => {
+                    element.innerText = data['topScore'];
+                });
+            } else {
+                console.error('No elements found with class "topScore"');
+            }
+
+            var totalPracticeTimeAll = document.querySelectorAll('.totalPracticeTime');
+            
+            if (totalPracticeTimeAll.length > 0) {
+                totalPracticeTimeAll.forEach(element => {
+                    element.innerText = data['totalPracticeTime'];
+                });
+            } else {
+                console.error('No elements found with class "totalPracticeTime"');
+            }
+
+            var oncomingPracticeAll = document.querySelectorAll('.oncomingPractice');
+            
+            if (oncomingPracticeAll.length > 0) {
+                oncomingPracticeAll.forEach(element => {
+                    element.innerText = data['oncomingPractice'];
+                });
+            } else {
+                console.error('No elements found with class "oncomingPractice"');
+            }
+        });
+    </script>
 </body>
 
 </html>

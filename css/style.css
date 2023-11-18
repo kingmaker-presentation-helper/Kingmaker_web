@@ -1,4 +1,24 @@
 /********** Template CSS **********/
+
+/* < --- for scroll bar start --- >*/
+.scroll-container {
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.scroll-item {
+    display: inline-block;
+    width: 200px;
+    margin-right: 150px; /* Adjust the margin-right for spacing */
+}
+
+.scroll-item img {
+    max-height: 200px;
+    width: auto;
+}
+/* < --- for scroll bar end --- >*/
+
 :root {
     --primary: #009CFF;
     --light: #F3F6F9;
