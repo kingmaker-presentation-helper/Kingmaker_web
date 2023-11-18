@@ -6,12 +6,23 @@
             container: '#waveform',
             waveColor: 'violet',
             progressColor: 'purple',
-            barWidth: 3, // 막대의 너비 설정
-            barHeight: 2, // 막대의 높이 배수 설정
+            barWidth: 3,
+            barHeight: 2,
         });
     
         let mediaRecorder;
         let audioChunks = [];
+        let timerInterval;
+        let elapsedTime = 0;
+    
+        function updateTimer() {
+            elapsedTime += 100; // 밀리초 단위로 업데이트
+            let milliseconds = parseInt((elapsedTime % 1000) / 10);
+            let seconds = Math.floor((elapsedTime / 1000) % 60);
+            let minutes = Math.floor((elapsedTime / (1000 * 60)) % 60);
+    
+            $('#timer').text(`${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}:${milliseconds.toString().padStart(2, '0')}`);
+        }
     
         $('#recordButton').click(function() {
             if (!mediaRecorder || mediaRecorder.state === 'inactive') {
@@ -19,10 +30,13 @@
                     .then(stream => {
                         mediaRecorder = new MediaRecorder(stream);
                         mediaRecorder.start();
+                        elapsedTime = 0;
+                        timerInterval = setInterval(updateTimer, 100); // 100 밀리초마다 타이머 업데이트
                         mediaRecorder.ondataavailable = event => {
                             audioChunks.push(event.data);
                         };
                         mediaRecorder.onstop = () => {
+                            clearInterval(timerInterval);
                             const audioBlob = new Blob(audioChunks);
                             const audioUrl = URL.createObjectURL(audioBlob);
                             wavesurfer.load(audioUrl);
@@ -31,9 +45,11 @@
                     });
             } else {
                 mediaRecorder.stop();
+                clearInterval(timerInterval);
             }
         });
     });
+    
 
 
 

@@ -229,19 +229,21 @@
 
 
 
-            <script src="https://unpkg.com/wavesurfer.js"></script>
+            
             <div class="container mt-5">
                 <div class="text-center mb-4">
                     <h2>음성 녹음 및 웨이브폼 표시</h2>
                     <p>아래 버튼을 눌러 녹음을 시작하세요.</p>
                     <div id="waveform" class="mt-4" style="background-color: #f0f0f0;"></div>
                 </div>
-                <div class="d-flex justify-content-center">
+                <div class="d-flex flex-column align-items-center">
+                    <span id="timer" class="badge badge-light mb-2" style="font-size: 1.0rem; background-color: #28a745; color: white; padding: 10px;">00:00:00</span> 
                     <button id="recordButton" class="btn btn-lg btn-danger">녹음 시작/중지</button>
                 </div>
-                
-                
             </div>
+            
+            
+            
 
 
 
@@ -372,6 +374,7 @@
     <script src="lib/tempusdominus/js/moment.min.js"></script>
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="https://unpkg.com/wavesurfer.js"></script>
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
