@@ -7,86 +7,12 @@
 
 
 
+   
+    
 
 
 
 
-    $(document).ready(function() {
-        let wavesurfer = WaveSurfer.create({
-            container: '#waveform',
-            waveColor: 'violet',
-            progressColor: 'purple',
-            barWidth: 3,
-            barHeight: 4,
-        });
-    
-        let mediaRecorder;
-        let audioChunks = [];
-        let timerInterval;
-        let recordingStartTime;
-    
-        function formatTime(time) {
-            let minutes = Math.floor(time / 60);
-            let seconds = Math.floor(time % 60);
-            let milliseconds = Math.floor((time % 1) * 100);
-            return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}:${milliseconds.toString().padStart(2, '0')}`;
-        }
-    
-        function updateRecordingTimer() {
-            let currentTime = (Date.now() - recordingStartTime) / 1000;
-            $('#timer').text(formatTime(currentTime));
-        }
-    
-        function updatePlaybackTimer() {
-            let currentTime = wavesurfer.getCurrentTime();
-            $('#timer').text(formatTime(currentTime));
-        }
-            
-        wavesurfer.on('interaction', function() {
-            wavesurfer.play();
-        });
-    
-        // 오디오 재생 중 타이머 업데이트
-        wavesurfer.on('audioprocess', function() {
-            updatePlaybackTimer();
-        });
-        
-
-            // 재생 버튼 이벤트 리스너
-        $('#playButton').click(function() {
-            if (wavesurfer.isPlaying()) {
-                wavesurfer.pause();
-            } else {
-                wavesurfer.play();
-            }
-        });
-        //녹음 재생 버튼
-        $('#recordButton').click(function() {
-            if (!mediaRecorder || mediaRecorder.state === 'inactive') {
-                navigator.mediaDevices.getUserMedia({ audio: true })
-                    .then(stream => {
-                        mediaRecorder = new MediaRecorder(stream);
-                        mediaRecorder.start();
-                        recordingStartTime = Date.now();
-                        timerInterval = setInterval(updateRecordingTimer, 100);
-                        mediaRecorder.ondataavailable = event => {
-                            audioChunks.push(event.data);
-                        };
-                        mediaRecorder.onstop = () => {
-                            clearInterval(timerInterval);
-                            const audioBlob = new Blob(audioChunks);
-                            const audioUrl = URL.createObjectURL(audioBlob);
-                            wavesurfer.load(audioUrl);
-                            audioChunks = [];
-                        };
-                    });
-            } else {
-                mediaRecorder.stop();
-                clearInterval(timerInterval);
-            }
-        });
-    });
-    
     
     
     
