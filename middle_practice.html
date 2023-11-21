@@ -229,48 +229,110 @@
 
 
 
-            
-            <div class="container mt-5">
-                <div class="text-center mb-4">
-                    <h2>음성 녹음 및 웨이브폼 표시</h2>
-                    <p>아래 버튼을 눌러 녹음을 시작하세요.</p>
-            
-                    <div class="row">
-                        <div class="col-12 mb-4">
-                            <div class="ratio ratio-16x9" style="max-height: 100%;">
-                                <div id="videoPlaceholder" class="bg-light rounded shadow-lg d-flex justify-content-center align-items-center" style="width: 100%; height: 100%;">
-                                    <span class="text-muted">비디오 미리보기</span>
-                                </div>
-                                <video id="liveVideoFeed" class="rounded shadow-lg" autoplay muted style="width: 100%; height: 100%; display: none;"></video>
-                                <video id="videoPlayback" class="rounded shadow-lg" style="width: 100%; height: 100%; display: none;"></video>
 
-                            </div>
-                        </div>
+<!--html은 주석이 중첩처리 되지 않는다고 합니다. 그래서 두 개 모두 일단 구현되어있는 상태입니다.
+비디오버전과, ppt버전을 테스트하려면 각 해당하지 않은 영역을 삭제한 후 확인하시면 됩니다.-->
+
+
+
+
+
+
+
+
+<!-- 음성 녹음 및 비디오 플레이어 섹션 -->
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h2>음성 녹음 및 웨이브폼 표시</h2>
+        <p>아래 버튼을 눌러 녹음을 시작하세요.</p>
+
+        <!-- 비디오 플레이어 영역 -->
+        <div class="row">
+            <div class="col-12 mb-4">
+                <div class="ratio ratio-16x9" style="max-height: 100%;">
+                    <div id="videoPlaceholder" class="bg-light rounded shadow-lg d-flex justify-content-center align-items-center" style="width: 100%; height: 100%;">
+                        <span class="text-muted">비디오 미리보기</span>
                     </div>
-            
-                    <div class="row">
-                        <div class="col-12">
-                            <div id="waveform" class="rounded shadow-lg" style="background-color: #f0f0f0; width: 100%;"></div>
-                        </div>
-                    </div>
-            
-                    <div class="row mt-3">
-                        <div class="col-12 text-center">
-                            <span id="timer" class="badge badge-light mb-2" style="font-size: 1.0rem; background-color: #28a745; color: white; padding: 10px;">00:00:00</span>
-                            <div class="mt-2">
-                                <button id="recordButton" class="btn btn-lg btn-danger">녹음 시작</button>
-                                <button id="playButton" class="btn btn-lg btn-success ml-2">재생</button>
+                    <video id="liveVideoFeed" class="rounded shadow-lg" autoplay muted style="width: 100%; height: 100%; display: none;"></video>
+                    <video id="videoPlayback" class="rounded shadow-lg" style="width: 100%; height: 100%; display: none;"></video>
+                </div>
+            </div>
+        </div>
+        <!-- 캐러셀 섹션 -->
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-12 mb-4">
+                    <!-- 캐러셀이 비디오 플레이어 크기와 동일하도록 설정 -->
+                    <div class="ratio ratio-16x9" style="max-height: 100%;">
+                        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                            <!-- 캐러셀 인디케이터 -->
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
                             </div>
+                            <!-- 캐러셀 내부 아이템 -->
+                            <div class="carousel-inner">
+                                <!-- 첫 번째 아이템 -->
+                                <div class="carousel-item active">
+                                    <img src="https://picsum.photos/800/450?random=1" class="d-block w-100" alt="First slide">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>First slide label</h5>
+                                        <p>Some representative placeholder content for the first slide.</p>
+                                    </div>
+                                </div>
+                                <!-- 두 번째 아이템 -->
+                                <div class="carousel-item">
+                                    <img src="https://picsum.photos/800/450?random=2" class="d-block w-100" alt="Second slide">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>Second slide label</h5>
+                                        <p>Some representative placeholder content for the second slide.</p>
+                                    </div>
+                                </div>
+                                <!-- 세 번째 아이템 -->
+                                <div class="carousel-item">
+                                    <img src="https://picsum.photos/800/450?random=3" class="d-block w-100" alt="Third slide">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>Third slide label</h5>
+                                        <p>Some representative placeholder content for the third slide.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 캐러셀 컨트롤 버튼 -->
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            
-            
-            
-            
-            
+        </div>
+        <!-- 웨이브폼 영역 -->
+        <div class="row">
+            <div class="col-12">
+                <div id="waveform" class="rounded shadow-lg" style="background-color: #f0f0f0; width: 100%;"></div>
+            </div>
+        </div>
+
+        <!-- 녹음 및 재생 컨트롤 버튼 -->
+        <div class="row mt-3">
+            <div class="col-12 text-center">
+                <span id="timer" class="badge badge-light mb-2" style="font-size: 1.0rem; background-color: #28a745; color: white; padding: 10px;">00:00:00</span>
+                <div class="mt-2">
+                    <button id="recordButton" class="btn btn-lg btn-danger">녹음 시작</button>
+                    <button id="playButton" class="btn btn-lg btn-success ml-2">재생</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
             
             
 
