@@ -234,22 +234,44 @@
                     
                     <h6 class="mb-0">최근 연습</h6>
                     <div class="scroll-container">
-                        <div class="scroll-item">
+                        <div class="scroll-item-recent">
                             <img src="./img/ppt1.jpg" class="d-block mx-auto" alt="...">
                         </div>
-                        <div class="scroll-item">
+                        <div class="scroll-item-recent">
                             <img src="./img/ppt2.png" class="d-block mx-auto" alt="...">
                         </div>
-                        <div class="scroll-item">
+                        <div class="scroll-item-recent">
                             <img src="./img/ppt3.png" class="d-block mx-auto" alt="...">
                         </div>
-                        <div class="scroll-item">
+                        <div class="scroll-item-recent">
                             <img src="./img/ppt4.jpg" class="d-block mx-auto" alt="...">
                         </div>
                     </div>
                 </div>
             </div>
             <!-- 최근 연습 끝 -->
+            
+            <!-- reference 영상 시작 -->
+            <div class="container-fluid pt-4 px-4"> 
+                <div class="h-100 bg-light rounded p-4">
+                    
+                    <h6 class="mb-0">유명 발표 영상</h6>
+                    <div class="scroll-container">
+                        
+                        <div class="scroll-item-reference" >
+                            <iframe class="mx-auto" width="560" height="315" src="https://www.youtube.com/embed/149hNFcPCMo?si=NqFM00qUTA7sSo4_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <div class="scroll-item-reference" >
+                            <iframe class="mx-auto" width="560" height="315" src="https://www.youtube.com/embed/iRgBhy5EU7o?si=CyrGWnyu_QE_wGJx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <div class="scroll-item-reference" >
+                            <iframe class="mx-auto" width="560" height="315" src="https://www.youtube.com/embed/OaKEEl8TU1c?si=Az8Xx4H2c8mfXKTy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- reference 영상 끝 -->
+            
             
 
             <!-- Widgets Start -->
@@ -394,7 +416,9 @@
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
     <script>
         // Your web app's Firebase configuration
-        
+        var firebaseConfig = {
+        };
+
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         var database = firebase.database(); // Corrected variable name

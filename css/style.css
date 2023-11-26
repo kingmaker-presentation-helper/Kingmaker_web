@@ -7,10 +7,17 @@
     width: 100%;
 }
 
-.scroll-item {
+.scroll-item-recent {
     display: inline-block;
     width: 200px;
     margin-right: 150px; /* Adjust the margin-right for spacing */
+}
+
+.scroll-item-reference {
+    display: inline-block;
+    width: 200px;
+    padding: 20px;
+    margin-right: 360px; /* Adjust the margin-right for spacing */
 }
 
 .scroll-item img {
