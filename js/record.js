@@ -32,12 +32,17 @@
             let currentTime = (Date.now() - recordingStartTime) / 1000;
             $('#timer').text(formatTime(currentTime));
         }
+        
 
         // 재생 시간 업데이트 함수
         wavesurfer.on('audioprocess', function() {
             updatePlaybackTimer();
         });
-
+        function updatePlaybackTimer() {
+            let currentTime = wavesurfer.getCurrentTime();
+            $('#playbackTimer').text(formatTime(currentTime));
+        }
+        
         // Waveform 클릭 이벤트 처리
         wavesurfer.on('ready', function() {
             const waveformContainer = document.querySelector('#waveform');
