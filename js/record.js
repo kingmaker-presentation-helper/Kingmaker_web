@@ -129,8 +129,6 @@
                         mediaRecorder.onstop = () => {
                             clearInterval(timerInterval);
                             const blob = new Blob(combinedChunks, { 'type' : 'video/mp4' });
-                            processAudioFromVideo(blob);
-                            
                             const url = URL.createObjectURL(blob);
                             videoPlayer.src = url;
                             showVideoElement(videoPlayer);
@@ -152,71 +150,4 @@
             }
         });
     });
-    // Blob을 Array Buffer로 변환하는 함수
-    function blobToArrayBuffer(blob) {
-        console.log("Blob을 Array Buffer로 변환하는 함수");
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.onloadend = () => resolve(reader.result);
-            reader.onerror = reject;
-            reader.readAsArrayBuffer(blob);
-    });
-}
-    // Array Buffer를 Base64 인코딩 문자열로 변환하는 함수
-    function arrayBufferToBase64(buffer) {
-        console.log("Array Buffer를 Base64 인코딩 문자열로 변환하는 함수");
-        let binary = '';
-        const bytes = new Uint8Array(buffer);
-        const len = bytes.byteLength;
-        for (let i = 0; i < len; i++) {
-            binary += String.fromCharCode(bytes[i]);
-        }
-        return window.btoa(binary);
-    }
-    // 오디오 추출 및 인코딩 처리
-    function processAudioFromVideo(blob) {
-        blobToArrayBuffer(blob).then(buffer => {
-            // 오디오 Array Buffer를 Base64 인코딩
-            const base64Audio = arrayBufferToBase64(buffer);
-
-            // API 호출 설정
-            const openApiURL = 'http://aiopen.etri.re.kr:8000/WiseASR/Recognition';
-            const accessKey = 'd3ca99f6-bf7e-460d-b345-dcf2ea1cbb7b'; 
-            const languageCode = 'korean'; 
-
-            // API 호출을 위한 요청 JSON 구성
-            const requestJson = {
-                'argument': {
-                    'language_code': languageCode,
-                    'audio': base64Audio
-                }
-            };
-
-            // API 호출
-            console.log("Api 호출");
-            fetch(openApiURL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': accessKey
-                },
-                body: JSON.stringify(requestJson)
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.text(); 
-            })
-            .then(data => {
-                console.log('API response:', data);
-                // 응답 처리
-            })
-            .catch(error => {
-                console.error('API 호출 중 오류 발생:', error);
-            });
-
-        });
-        
-    }
 })(jQuery);
