@@ -2,6 +2,57 @@
     "use strict";
 
     $(document).ready(function() {
+
+
+        /***************** AWS 설정 *****************/
+        AWS.config.update({
+            accessKeyId: '',
+            secretAccessKey: ''
+        });
+        AWS.config.region = 'ap-northeast-2'; // 원하는 리전 설정
+
+        // S3 인스턴스 생성
+        var s3 = new AWS.S3({apiVersion: '2006-03-01'});
+
+        // 사용자 ID 설정 (임시로 'king'으로 설정)
+        const userId = 'king';
+
+        // 파일 업로드 함수
+        function uploadFileToS3(file, userId) {
+            // 폴더 내 파일 수 확인
+            s3.listObjects({Bucket: 'kingmaker-s3-bucket', Prefix: `${userId}/`}, function(err, data) {
+                if (err) {
+                    console.log("Error", err);
+                    return;
+                }
+
+                // 새 파일 ID 생성
+                const fileNumber = data.Contents.length + 1;
+
+                // 파일 경로 설정
+                var filePath = `${userId}/${fileNumber}_example.mp4`;
+
+                var params = {
+                    Bucket: 'kingmaker-s3-bucket', 
+                    Key: filePath, 
+                    Body: file
+                };
+
+                // 파일 업로드
+                s3.upload(params, function(uploadErr, uploadData) {
+                    if (uploadErr) {
+                        console.log("Error", uploadErr);
+                    } if (uploadData) {
+                        console.log("Upload Success", uploadData.Location);
+                    }
+                });
+            });
+        }
+
+
+
+
+
         // WaveSurfer 초기화
         let wavesurfer = WaveSurfer.create({
             container: '#waveform',
@@ -135,6 +186,11 @@
                             hideVideoElement(liveVideoFeed);
                             wavesurfer.load(url);
                             combinedChunks = [];
+
+
+                            // Blob을 파일로 변환하여 S3에 업로드
+                            const audioFile = new File([blob], "audio_recording.mp4", {type: "video/mp4"});
+                            uploadFileToS3(audioFile, userId);
                         };
                         $(this).text('녹음 중지');  // 버튼 텍스트 변경: 'Stop Recording'
                     }).catch(error => {
