@@ -38,12 +38,10 @@
         wavesurfer.on('audioprocess', function() {
             updatePlaybackTimer();
         });
-        
         function updatePlaybackTimer() {
             let currentTime = wavesurfer.getCurrentTime();
-            $('#timer').text(formatTime(currentTime));
+            $('#playbackTimer').text(formatTime(currentTime));
         }
-        
         
         // Waveform 클릭 이벤트 처리
         wavesurfer.on('ready', function() {
@@ -52,15 +50,10 @@
             waveformContainer.addEventListener('click', function(event) {
                 const clickPosition = (event.clientX - waveformContainer.getBoundingClientRect().left) / waveformContainer.clientWidth;
                 const time = clickPosition * videoPlayer.duration;
-            
-                if (isFinite(time) && videoPlayer.readyState >= 2) {
-                    videoPlayer.currentTime = time;
-                }
+                
+                videoPlayer.currentTime = time;
             });
-            
         });
-        
-        
 
         // 비디오 요소 표시 함수
         function showVideoElement(element) {
