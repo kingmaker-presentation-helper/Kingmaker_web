@@ -9,7 +9,7 @@ const Main = () => {
             <Layout>
                 <div>
                     <h1>
-                        메인 페이지
+                        메인 페이지 123123
                     </h1>
                 </div>
             </Layout>
