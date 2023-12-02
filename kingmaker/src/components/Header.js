@@ -7,6 +7,10 @@ const Header = () => {
     const navigateToStartPage = () =>{
         navigate("/startPage");
     }
+
+    const navigateToDuringPage = () => {
+        navigate("/duringPage");
+    }
   return (
     <>
       <header
@@ -29,18 +33,18 @@ const Header = () => {
           <button
             className="logo-button"
             style={{
-              backgroundPosition: "-255px -321px",
-              // width: "114px",
-              // height: "20px",
-              display: "block",
-              // paddingTop: "20px",
-              margin: "37px 10px 5px 20px",
-              backgroundColor: "transparent",
-              border: "none",
-              boxSahdow: "none",
-              fontSize: "35px",
-              fontWeight: "700",
-              cursor: "pointer",
+                backgroundPosition: "-255px -321px",
+                // width: "114px",
+                // height: "20px",
+                display: "block",
+                // paddingTop: "20px",
+                margin: "37px 10px 5px 20px",
+                backgroundColor: "transparent",
+                border: "none",
+                boxSahdow: "none",
+                fontSize: "35px",
+                fontWeight: "700",
+                cursor: "pointer",
             }}
             onClick={() => {
               navigate("/");
@@ -63,7 +67,9 @@ const Header = () => {
             </button>
         </h3>
         <h3 class="DuringPractice">
-            <button>
+            <button onClick={() =>{
+                navigateToDuringPage();
+            }}>
                 연습 중
             </button>
         </h3>
