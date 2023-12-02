@@ -6,6 +6,7 @@ import PresentationInfo from "./components/presentationInfo";
 const Start = () => {
     const [startDate, setStartDate] = useState(new Date());
 
+    // table로 만들어서 컴포넌트 관리
     return (
         <>
             <Header />
