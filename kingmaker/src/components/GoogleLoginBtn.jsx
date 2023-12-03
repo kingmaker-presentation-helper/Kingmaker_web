@@ -13,7 +13,7 @@ export const GoogleLoginBtn = () => {
 			exp: decode_token.exp
 		}
 		//post 요청을 보낸다.
-		axios.post("http://localhost:8000/user/login", data,
+		axios.post("http://localhost:9000/user/login", data,
 			{
 				headers: {
 					'Content-Type': 'application/json'
