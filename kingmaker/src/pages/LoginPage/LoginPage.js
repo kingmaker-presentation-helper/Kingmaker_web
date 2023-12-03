@@ -44,7 +44,7 @@ const Login = () => {
 		if (ACCESS_TOKEN){
 			get_data();
 		}
-	},[])
+	},[ACCESS_TOKEN, get_data])
     return(
         <>
             <Header/>
