@@ -1,10 +1,13 @@
 import { GoogleLogin } from '@react-oauth/google'
 import axios from 'axios'
-import jwtDecode from 'jwt-decode'
+import jwtDecode  from 'jwt-decode'
+// import jwt_decode, { JwtPayload }  from 'jwt-decode'
 import React from 'react'
 
 export const GoogleLoginBtn = () => {
 	const loginHandle = (response) => {
+		
+		// const decode_token = jwt_decode<JwtPayload>(response.credential)
 		const decode_token = jwtDecode(response.credential)
 		// FastAPI 서버로 보낼 데이터 폼
 		const data = {
