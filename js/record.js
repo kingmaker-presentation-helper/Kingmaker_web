@@ -6,8 +6,8 @@
 
         /***************** AWS 설정 *****************/
         AWS.config.update({
-            accessKeyId: 'AKIATCBUFR5KXAZPVOOP',
-            secretAccessKey: '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'
+            accessKeyId: '',
+            secretAccessKey: ''
         });
         AWS.config.region = 'ap-northeast-2'; // 원하는 리전 설정
 
