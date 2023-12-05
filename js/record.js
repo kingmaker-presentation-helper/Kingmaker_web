@@ -6,8 +6,8 @@
 
         /***************** AWS 설정 *****************/
         AWS.config.update({
-            accessKeyId: '',
-            secretAccessKey: ''
+            accessKeyId: 'AKIATCBUFR5KXAZPVOOP',
+            secretAccessKey: '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'
         });
         AWS.config.region = 'ap-northeast-2'; // 원하는 리전 설정
 
@@ -18,24 +18,30 @@
         const userId = 'king';
 
         // 파일 업로드 함수
-        function uploadFileToS3(file, userId) {
+        function uploadFileToS3(file, userId, duration) {
             // 폴더 내 파일 수 확인
             s3.listObjects({Bucket: 'kingmaker-s3-bucket', Prefix: `${userId}/`}, function(err, data) {
                 if (err) {
                     console.log("Error", err);
                     return;
                 }
-
+        // .mp4 확장자를 가진 파일만 필터링
+        const mp4Files = data.Contents.filter(function (item) {
+            return item.Key.endsWith('.mp4');
+        });
                 // 새 파일 ID 생성
-                const fileNumber = data.Contents.length + 1;
+                const fileNumber = mp4Files.length + 1;
 
                 // 파일 경로 설정
-                var filePath = `${userId}/${fileNumber}_example.mp4`;
+                var filePath = `${userId}/ex${fileNumber}.mp4`;
 
                 var params = {
                     Bucket: 'kingmaker-s3-bucket', 
                     Key: filePath, 
-                    Body: file
+                    Body: file,
+                    Metadata: {
+                        'duration': duration.toString()
+                    }
                 };
 
                 // 파일 업로드
@@ -179,6 +185,9 @@
 
                         mediaRecorder.onstop = () => {
                             clearInterval(timerInterval);
+                                                            // 녹화 종료 시간을 기록하고 영상 길이 계산
+    const recordingEndTime = Date.now();
+    const durationInSeconds = (recordingEndTime - recordingStartTime) / 1000;
                             const blob = new Blob(combinedChunks, { 'type' : 'video/mp4' });
                             const url = URL.createObjectURL(blob);
                             videoPlayer.src = url;
@@ -190,7 +199,7 @@
 
                             // Blob을 파일로 변환하여 S3에 업로드
                             const audioFile = new File([blob], "audio_recording.mp4", {type: "video/mp4"});
-                            uploadFileToS3(audioFile, userId);
+                            uploadFileToS3(audioFile, userId, durationInSeconds);
                         };
                         $(this).text('녹음 중지');  // 버튼 텍스트 변경: 'Stop Recording'
                     }).catch(error => {
