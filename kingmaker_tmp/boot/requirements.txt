@@ -1,5 +1,6 @@
 # npm install
 react-bootstrap bootstrap
 react-router-dom
+react-webcam
 bootstrap
 bootstrap @fortawesome/fontawesome-free bootstrap-icons
