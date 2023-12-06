@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, forwardRef, useImperativeHandle} from 'react';
 import Webcam from 'react-webcam';
 
 const videoConstraints={
@@ -6,21 +6,38 @@ const videoConstraints={
     facingMode: 'environment'
 }
 
-const Camera=()=>{
+const Camera = forwardRef((props, ref)=>{
 
     const webcamRef = useRef(null);
-
-    const [url, setUrl] = useState(null);
+    const [captureIndex, setCaptureIndex] = useState(1);
 
     // 스크린샷 url 생성 함수
-    const capturePhoto = React.useCallback(async()=>{
-        const imageSrc = webcamRef.current.getScreenshot()
-        setUrl(imageSrc);
-    }, [webcamRef]);
+    const capturePhoto = async() => {
+        const imageSrc = webcamRef.current.getScreenshot();
+        if(imageSrc){
+            const filename=`${captureIndex}.jpg`;
+            downloadPhoto(imageSrc, filename);
+
+            setCaptureIndex(captureIndex + 1);
+        }
+    }
+
+    const downloadPhoto = (url, filename) =>{
+        const downloadLink = document.createElement('a');
+        downloadLink.href = url;
+        downloadLink.download = filename;
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+    }
 
     const onUserMedia = (e) =>{
         console.log(e)
     }
+
+    useImperativeHandle(ref, () => ({
+        capturePhoto
+    }));
 
     return(
         <>
@@ -31,18 +48,8 @@ const Camera=()=>{
         videoConstraints={videoConstraints}
         onUserMedia={onUserMedia}
         mirrored={true} />
-
-
-        <button onClick={capturePhoto}>Capture</button>
-        <button onClick={()=> setUrl(null)}>Refresh</button>
-
-        {url && (
-            <div>
-                <img src={url} alt="Screenshot" />
-            </div>
-        )}
         </>
     )
-}
+});
 
 export default Camera;
