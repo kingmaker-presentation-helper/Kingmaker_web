@@ -1,0 +1,5 @@
+# npm install
+react-bootstrap bootstrap
+react-router-dom
+bootstrap
+bootstrap @fortawesome/fontawesome-free bootstrap-icons

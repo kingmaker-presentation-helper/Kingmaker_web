@@ -1,0 +1,26 @@
+.project {
+    display: flex;
+    justify-content: center;
+    width: auto;
+    padding: 5rem;
+
+    .carousel {
+        background: coral;
+        width: 500px;
+        height: 500px;
+        overflow: hidden;
+
+        .carouselBox {
+            display: flex;
+
+            .carouselItem {
+                width: 500px;
+                height: 500px;
+                background-position: 50% 50%;
+                background-size: contain;
+                background-repeat: no-repeat;
+                flex: none;
+            }
+        }
+    }
+}

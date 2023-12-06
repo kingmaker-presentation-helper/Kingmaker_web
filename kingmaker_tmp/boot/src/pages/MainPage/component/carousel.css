@@ -1,0 +1,20 @@
+.carousel {
+    background: coral;
+    width: 500px;
+    height: 500px;		
+    overflow: hidden;
+}
+
+.carouselBox {
+    display: flex;
+    /* transition: 1s; */ 
+}
+
+.carouselItem {
+    width: 500px;
+    height: 500px;
+    background-position: 50% 50%; 
+    background-size: contain;	   
+    background-repeat: no-repeat;
+    flex: none;	  				 
+}
