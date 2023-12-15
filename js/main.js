@@ -139,7 +139,20 @@
         }
     });
 
+    async function fetchData() {
+        const response = await fetch('/data');
+        const data = await response.json();
+        updateWebPage(data);
+    }
+    
+    function updateWebPage(data) {
+        // 웹 페이지 업데이트 로직
+    }
+    
+    // 페이지 로드 시 데이터 불러오기
+    fetchData();
 
+    
     // // Worldwide Sales Chart
     // var ctx1 = $("#worldwide-sales").get(0).getContext("2d");
     // var myChart1 = new Chart(ctx1, {
