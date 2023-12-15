@@ -139,18 +139,48 @@
         }
     });
 
+
+
     async function fetchData() {
-        const response = await fetch('/data');
-        const data = await response.json();
-        updateWebPage(data);
+        try {
+            const response = await fetch('http://127.0.0.1:8000/items');
+            const data = await response.json();
+            updateUI(data);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
     }
     
-    function updateWebPage(data) {
-        // 웹 페이지 업데이트 로직
+    function updateUI(data) {
+
+        const fastCheckElement = document.querySelector('#fastCheck h3');
+        const DurationElement = document.querySelector('#wholeTime h3');
+        const stopWordElement = document.querySelector('#stopWord h3');
+
+        // 예를 들어, 'uid'가 '1'인 아이템의 'SpeechSpeed' 값을 찾기
+        const item = data.items.find(item => item.uid === '1');
+        if (item.SpeechSpeed) {
+            fastCheckElement.textContent = `+${item.SpeechSpeed}%`;
+        } else {
+            fastCheckElement.textContent = '데이터 없음';
+        }
+        if (item.Duration) {
+            DurationElement.textContent = `${item.Duration}초`;
+        } else {
+            DurationElement.textContent = '데이터 없음';
+        }
+        if (item.StopWord) {
+            stopWordElement.textContent = `${item.StopWord}`;
+        } else {
+            stopWordElement.textContent = '데이터 없음';
+        }
     }
     
-    // 페이지 로드 시 데이터 불러오기
-    fetchData();
+
+    
+    // 페이지 로드 시 데이터 가져오기
+    window.onload = fetchData;
+    
 
     
     // // Worldwide Sales Chart
