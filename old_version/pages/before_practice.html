@@ -124,16 +124,16 @@
 
                     <div class="col-sm-12 col-xl-6">
                         <div class="bg-light rounded h-100 p-4">
-                            <h6 class="mb-4">발표 정보</h6>
+                            <h6 class="mb-4">발표 정보 입력</h6>
                             <div class="form-floating mb-3">
                                 <input type="email" class="form-control" id="floatingInput"
                                     placeholder="name@example.com">
-                                <label for="floatingInput">주제</label>
+                                <label id="title" for="floatingInput">발표 제목</label>
                             </div>
                             <div class="form-floating">
                                 <textarea class="form-control" placeholder="Leave a comment here"
                                     id="floatingTextarea" style="height: 100px;"></textarea>
-                                <label for="floatingTextarea">발표 설명</label>
+                                <label id="keyword" for="floatingTextarea">주요 키워드</label>
                             </div>
 
                             <!-- 달력 Start  -->
@@ -143,7 +143,8 @@
                                         <h6 class="mb-0">발표 날짜</h6>
                                         <a href="">Show All</a>
                                     </div>
-                                    <div id="calender"></div>
+                                    <div id="calender" class="mb-4"></div>
+                                    <h6 id="date"></h6>
                                 </div>
                                 <!-- 달력 End -->
                             </div>
@@ -155,21 +156,21 @@
                         <div class="bg-light rounded h-100 p-4">
                             <h6 class="mb-4">발표 자료 업로드</h6>
                             <div>
-                                <label for="formFileLg" class="form-label">시각 자료 업로드</label>
-                                <input class="form-control" id="pptFile" type="file">
+                                <label for="formFileLg" class="form-label">프레젠테이션 자료 업로드</label>
+                                <input class="form-control" id="pptFile" type="file" accept=".ppt, .pptx">
                             </div>
                             <div style="margin-top: 32px;">
                                 <label for="formFileLg" class="form-label">발표 대본 업로드</label>
-                                <input class="form-control" id="pptFile" type="file">
+                                <input class="form-control" id="scriptFile" type="file" accept=".txt">
                             </div>
 
 
                             <div style="margin-top: 32px;">
-                                <h6 class="mb-4">자료 확인</h6>
+                                <h6 class="mb-4">업로드한 자료 확인</h6>
                                 <div class="owl-carousel testimonial-carousel">
 
                                     <div class="testimonial-item text-center">
-                                        <label for="formFileLg" class="form-label">시각 자료</label>
+                                        <label for="formFileLg" class="form-label">프레젠테이션 자료</label>
                                         <img class="img-fluid mx-auto" src="../img/testimonial-1.jpg" style="width: 400px; height: 200px;">
                                     </div>
 
@@ -177,19 +178,10 @@
                                         <label for="formFileLg" class="form-label">발표 대본</label>
                                         <div class="container">
                                             <div class="scrollable-box" style="max-height:200px;">
-                                                <p style="text-align:justify;">
-                                                <!-- 예시용 긴 텍스트 -->
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.
-                                                Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta.
-                                                Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-                                                Curabitur sodales ligula in libero.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.
-                                                Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta.
-                                                Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-                                                Curabitur sodales ligula in libero.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.
-                                                Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta.
-                                                Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-                                                Curabitur sodales ligula in libero.
-                                                </p>
+                                                <pre id="previewScript" style="text-align:justify;">
+
+업로드한 대본이 표시됩니다.
+                                                </pre>
                                             </div>
                                         </div>
                                     </div>
@@ -201,7 +193,7 @@
                         </div>
                     </div>
                     <div style="display: flex; justify-content: center;">
-                        <button type="button" class="btn btn-lg btn-primary m-2" style="width: 216px;">발표연습 시작하기</button>
+                            <button id="next" type="button" class="btn btn-lg btn-primary m-2" style="width: 216px;">발표연습 시작하기</button>
                     </div>
                 </div>                    
             </div>
@@ -247,6 +239,6 @@
 
     <!-- Template Javascript -->
     <script src="../js/main.js"></script>
+    <script src="../js/before_practice/function.js"></script>
 </body>
-
 </html>

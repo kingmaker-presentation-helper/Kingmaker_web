@@ -40,20 +40,7 @@
         });
     }, {offset: '80%'});
 
-    // Calender
-    $(document).ready(function() {
-        $('#calender').datetimepicker({
-            inline: true,
-            format: 'L'
-        });
-
-        $('#calender').on('change.datetimepicker', function(e) {
-            console.log(e.date.format('YYYY-MM-DD'));
-        })
-    });
-
-
-
+    
     // Testimonials carousel
     $(".testimonial-carousel").owlCarousel({
         autoplay: true,
