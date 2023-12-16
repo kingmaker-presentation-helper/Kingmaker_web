@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="../img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,9 +29,11 @@
 
     <!-- Template Stylesheet -->
     <link href="../css/style.css" rel="stylesheet">
+    
 </head>
 
 <body>
+    
     <div class="container-xxl position-relative bg-white d-flex p-0">
         <!-- Spinner Start -->
         <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -50,40 +52,20 @@
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
-                        <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                        <img class="rounded-circle" src="../img/user.jpg" alt="" style="width: 40px; height: 40px;">
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">UserName</h6>
-                        <span>Role</span>
+                        <h6 class="mb-0 userName">UserName</h6>
+                        <span class="role">Role</span>
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <!-- <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="button.html" class="dropdown-item">Buttons</a>
-                            <a href="typography.html" class="dropdown-item">Typography</a>
-                            <a href="element.html" class="dropdown-item">Other Elements</a>
-                        </div>
-                    </div> -->
                     <a href="before_practice.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>연습 시작</a>
                     <a href="middle_practice.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>연습 중</a>
                     <a href="after_practice.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>연습 끝 (분석) </a>
                     <a href="expected_question.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>발표 예상 질문</a>
-                    <!-- <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
-                    <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
-                    <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="signin.html" class="dropdown-item">Sign In</a>
-                            <a href="signup.html" class="dropdown-item">Sign Up</a>
-                            <a href="404.html" class="dropdown-item">404 Error</a>
-                            <a href="blank.html" class="dropdown-item">Blank Page</a>
-                        </div>
-                    </div> -->
                 </div>
             </nav>
         </div>
@@ -169,8 +151,8 @@
                     </div>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">UserName</span>
+                            <img class="rounded-circle me-lg-2" src="../img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                            <span class="d-none d-lg-inline-flex userName">UserName</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">My Profile</a>
@@ -190,7 +172,7 @@
                             <i class="fa fa-chart-line fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">누적 연습 횟수</p>
-                                <h6 class="mb-0">17번</h6>
+                                <h6 class="mb-0 practiceCount">17번</h6>
                             </div>
                         </div>
                     </div>
@@ -199,8 +181,8 @@
                             <i class="fa fa-chart-bar fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">최고 점수</p>
-                                <h6 class="mb-0">89점</h6>
-                            </div>  
+                                <h6 class="mb-0 topScore">89점</h6>
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-6 col-xl-3">
@@ -208,7 +190,7 @@
                             <i class="fa fa-chart-area fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">총 연습 시간</p>
-                                <h6 class="mb-0">108분</h6>
+                                <h6 class="mb-0 totalPracticeTime">108분</h6>
                             </div>
                         </div>
                     </div>
@@ -217,139 +199,63 @@
                             <i class="fa fa-chart-pie fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">다가오는 발표</p>
-                                <h6 class="mb-0">11월 24일</h6>
+                                <h6 class="mb-0 oncomingPractice">11월 24일</h6>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
-
-<!--html은 주석이 중첩처리 되지 않는다고 합니다. 그래서 두 개 모두 일단 구현되어있는 상태입니다.
-비디오버전과, ppt버전을 테스트하려면 각 해당하지 않은 영역을 삭제한 후 확인하시면 됩니다.-->
-
-
-
-
-
-
-
-
-<!-- 음성 녹음 및 비디오 플레이어 섹션 -->
-<div class="container mt-5">
-    <div class="text-center mb-4">
-        <h2>음성 녹음 및 웨이브폼 표시</h2>
-        <p>아래 버튼을 눌러 녹음을 시작하세요.</p>
-
-        <!-- 비디오 플레이어 영역 -->
-        <div class="row">
-            <div class="col-12 mb-4">
-                <div class="ratio ratio-16x9" style="max-height: 100%;">
-                    <div id="videoPlaceholder" class="bg-light rounded shadow-lg d-flex justify-content-center align-items-center" style="width: 100%; height: 100%;">
-                        <span class="text-muted">비디오 미리보기</span>
-                    </div>
-                    <video id="liveVideoFeed" class="rounded shadow-lg" autoplay muted style="width: 100%; height: 100%; display: none;"></video>
-                    <video id="videoPlayback" class="rounded shadow-lg" style="width: 100%; height: 100%; display: none;"></video>
-                </div>
-            </div>
-        </div>
-        <!-- 캐러셀 섹션 -->
-        <div class="container mt-5">
-            <div class="row">
-                <div class="col-12 mb-4">
-                    <!-- 캐러셀이 비디오 플레이어 크기와 동일하도록 설정 -->
-                    <div class="ratio ratio-16x9" style="max-height: 100%;">
-                        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-                            <!-- 캐러셀 인디케이터 -->
-                            <div class="carousel-indicators">
-                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                            </div>
-                            <!-- 캐러셀 내부 아이템 -->
-                            <div class="carousel-inner">
-                                <!-- 첫 번째 아이템 -->
-                                <div class="carousel-item active">
-                                    <img src="https://picsum.photos/800/450?random=1" class="d-block w-100" alt="First slide">
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h5>First slide label</h5>
-                                        <p>Some representative placeholder content for the first slide.</p>
-                                    </div>
-                                </div>
-                                <!-- 두 번째 아이템 -->
-                                <div class="carousel-item">
-                                    <img src="https://picsum.photos/800/450?random=2" class="d-block w-100" alt="Second slide">
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h5>Second slide label</h5>
-                                        <p>Some representative placeholder content for the second slide.</p>
-                                    </div>
-                                </div>
-                                <!-- 세 번째 아이템 -->
-                                <div class="carousel-item">
-                                    <img src="https://picsum.photos/800/450?random=3" class="d-block w-100" alt="Third slide">
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h5>Third slide label</h5>
-                                        <p>Some representative placeholder content for the third slide.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- 캐러셀 컨트롤 버튼 -->
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- 웨이브폼 영역 -->
-        <div class="row">
-            <div class="col-12">
-                <div id="waveform" class="rounded shadow-lg" style="background-color: #f0f0f0; width: 100%;"></div>
-            </div>
-        </div>
-
-        <!-- 녹음 및 재생 컨트롤 버튼 -->
-        <div class="row mt-3">
-            <div class="col-12 text-center">
-                <span id="timer" class="badge badge-light mb-2" style="font-size: 1.0rem; background-color: #28a745; color: white; padding: 10px;">00:00:00</span>
-                <div class="mt-2">
-                    <button id="recordButton" class="btn btn-lg btn-danger">녹음 시작</button>
-                    <button id="playButton" class="btn btn-lg btn-success ml-2">재생</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-            
-            
-
-
-
-
-
-
-
-
-
-
             <!-- Sale & Revenue End -->
+            
+            
+            <!-- 최근 연습 시작 -->
+            <div class="container-fluid pt-4 px-4"> 
+                <div class="h-100 bg-light rounded p-4">
+                    
+                    <h6 class="mb-0">최근 연습</h6>
+                    <div class="scroll-container">
+                        <div class="scroll-item-recent">
+                            <img src="../img/ppt1.jpg" class="d-block mx-auto" alt="...">
+                        </div>
+                        <div class="scroll-item-recent">
+                            <img src="../img/ppt2.png" class="d-block mx-auto" alt="...">
+                        </div>
+                        <div class="scroll-item-recent">
+                            <img src="../img/ppt3.png" class="d-block mx-auto" alt="...">
+                        </div>
+                        <div class="scroll-item-recent">
+                            <img src="../img/ppt4.jpg" class="d-block mx-auto" alt="...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 최근 연습 끝 -->
+            
+            <!-- reference 영상 시작 -->
+            <div class="container-fluid pt-4 px-4"> 
+                <div class="h-100 bg-light rounded p-4">
+                    
+                    <h6 class="mb-0">유명 발표 영상</h6>
+                    <div class="scroll-container">
+                        
+                        <div class="scroll-item-reference" >
+                            <iframe class="mx-auto" width="560" height="315" src="https://www.youtube.com/embed/149hNFcPCMo?si=NqFM00qUTA7sSo4_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <div class="scroll-item-reference" >
+                            <iframe class="mx-auto" width="560" height="315" src="https://www.youtube.com/embed/iRgBhy5EU7o?si=CyrGWnyu_QE_wGJx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <div class="scroll-item-reference" >
+                            <iframe class="mx-auto" width="560" height="315" src="https://www.youtube.com/embed/OaKEEl8TU1c?si=Az8Xx4H2c8mfXKTy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- reference 영상 끝 -->
+            
+            
 
-
-            <!-- - 최근 연습한 발표-->
-            <!-- <div class="container-fluid pt-4 px-4">
+            <!-- Widgets Start -->
+            <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
                     <div class="col-sm-12 col-md-6 col-xl-4">
                         <div class="h-100 bg-light rounded p-4">
@@ -417,17 +323,30 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-sm-12 col-md-6 col-xl-4">
+                        <div class="h-100 bg-light rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h6 class="mb-0">Notification</h6>
+                                <a href="">Show All</a>
+                            </div>
+                            <div class="w-100 mt-3 mb-3">
+                                <div class="d-flex w-100 align-items-center justify-content-between">
+                                    <h5>내일 발표가 있으시네요</h5>
+                                </div>
+                            </div>
+                            <div class="w-100 mt-3 mb-3">
+                                <div class="d-flex w-100 align-items-center justify-content-between">
+                                    <button type="button" class="btn btn-primary mx-auto my-3">발표 연습하러 가기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
                 </div>
-            </div> -->
-            <!--- 최근 연습한 발표 끝 -->
-
-
-
-
-
-
-
-
+            </div>
+            <!-- Widgets End -->
 
 
             <!-- Footer Start -->
@@ -435,7 +354,7 @@
                 <div class="bg-light rounded-top p-4">
                     <div class="row">
                         <div class="col-12 col-sm-6 text-center text-sm-start">
-                            &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
+                            &copy; <a href="#">King Maker</a>, All Right Reserved. 
                         </div>
                         <div class="col-12 col-sm-6 text-center text-sm-end">
                             <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
@@ -458,19 +377,178 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../lib/chart/chart.min.js"></script>
+    <script src="lib/chart/chart.min.js"></script>
     <script src="../lib/easing/easing.min.js"></script>
     <script src="../lib/waypoints/waypoints.min.js"></script>
     <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="../lib/tempusdominus/js/moment.min.js"></script>
     <script src="../lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="../lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-    <script src="https://unpkg.com/wavesurfer.js"></script>
-    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.283.1.min.js"></script>
 
     <!-- Template Javascript -->
     <script src="../js/main.js"></script>
-    <script src="../js/record.js"></script>
+
+    
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var database = firebase.database(); // Corrected variable name
+
+        database.ref("test").set({
+            "name": "jihae",
+            "role": "user",
+            "practiceCount": "19번",
+            "topScore": "91점",
+            "totalPracticeTime": "108분",
+            "oncomingPractice": "11월 24일"            
+        });
+        var testRef = database.ref("test");
+
+        // 처음에 한 번 값 불러오기
+        testRef.once("value", (snapshot) => {
+            const data = snapshot.val();
+            
+            // 유저 이름
+            var userNameAll = document.querySelectorAll('.userName');
+            
+            if (userNameAll.length > 0) {
+                userNameAll.forEach(element => {
+                    element.innerText = data['name'];
+                });
+            } else {
+                console.error('No elements found with class "userName"');
+            }
+
+            // 역할
+            var roleAll = document.querySelectorAll('.role');
+            
+            if (roleAll.length > 0) {
+                roleAll.forEach(element => {
+                    element.innerText = data['role'];
+                });
+            } else {
+                console.error('No elements found with class "role"');
+            }
+            
+            // 대시보드 4가지
+            var practiceCountAll = document.querySelectorAll('.practiceCount');
+            
+            if (practiceCountAll.length > 0) {
+                practiceCountAll.forEach(element => {
+                    element.innerText = data['practiceCount'];
+                });
+            } else {
+                console.error('No elements found with class "practiceCount"');
+            }
+
+            var topScoreAll = document.querySelectorAll('.topScore');
+            
+            if (topScoreAll.length > 0) {
+                topScoreAll.forEach(element => {
+                    element.innerText = data['topScore'];
+                });
+            } else {
+                console.error('No elements found with class "topScore"');
+            }
+
+            var totalPracticeTimeAll = document.querySelectorAll('.totalPracticeTime');
+            
+            if (totalPracticeTimeAll.length > 0) {
+                totalPracticeTimeAll.forEach(element => {
+                    element.innerText = data['totalPracticeTime'];
+                });
+            } else {
+                console.error('No elements found with class "totalPracticeTime"');
+            }
+
+            var oncomingPracticeAll = document.querySelectorAll('.oncomingPractice');
+            
+            if (oncomingPracticeAll.length > 0) {
+                oncomingPracticeAll.forEach(element => {
+                    element.innerText = data['oncomingPractice'];
+                });
+            } else {
+                console.error('No elements found with class "oncomingPractice"');
+            }
+        });
+        
+        // 데이터베이스 수정사항 있을 때마다 값 불러오기
+        testRef.on("value", (snapshot) => {
+            const data = snapshot.val();
+
+            // 유저 이름
+            var userNameAll = document.querySelectorAll('.userName');
+
+            if (userNameAll.length > 0) {
+                userNameAll.forEach(element => {
+                    element.innerText = data['name'];
+                });
+            } else {
+                console.error('No elements found with class "userName"');
+            }
+
+            // 역할
+            var roleAll = document.querySelectorAll('.role');
+            
+            if (roleAll.length > 0) {
+                roleAll.forEach(element => {
+                    element.innerText = data['role'];
+                });
+            } else {
+                console.error('No elements found with class "role"');
+            }
+            
+            // 대시보드 4가지
+            var practiceCountAll = document.querySelectorAll('.practiceCount');
+            
+            if (practiceCountAll.length > 0) {
+                practiceCountAll.forEach(element => {
+                    element.innerText = data['practiceCount'];
+                });
+            } else {
+                console.error('No elements found with class "practiceCount"');
+            }
+
+            var topScoreAll = document.querySelectorAll('.topScore');
+            
+            if (topScoreAll.length > 0) {
+                topScoreAll.forEach(element => {
+                    element.innerText = data['topScore'];
+                });
+            } else {
+                console.error('No elements found with class "topScore"');
+            }
+
+            var totalPracticeTimeAll = document.querySelectorAll('.totalPracticeTime');
+            
+            if (totalPracticeTimeAll.length > 0) {
+                totalPracticeTimeAll.forEach(element => {
+                    element.innerText = data['totalPracticeTime'];
+                });
+            } else {
+                console.error('No elements found with class "totalPracticeTime"');
+            }
+
+            var oncomingPracticeAll = document.querySelectorAll('.oncomingPractice');
+            
+            if (oncomingPracticeAll.length > 0) {
+                oncomingPracticeAll.forEach(element => {
+                    element.innerText = data['oncomingPractice'];
+                });
+            } else {
+                console.error('No elements found with class "oncomingPractice"');
+            }
+        });
+    </script>
 </body>
 
 </html>
