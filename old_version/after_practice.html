@@ -31,6 +31,97 @@
     <link href="../css/style.css" rel="stylesheet">
 
 </head>
+<style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+    }
+    .video-container {
+      max-width: 600px; /* 이 값은 프로그레스 바 카드의 최대 너비와 일치해야 합니다. */
+      margin: auto; /* 가운데 정렬 */
+    }
+    video {
+      width: 100%; /* 반응형 비디오 사이즈 */
+      height: auto; /* 비디오의 높이를 자동으로 설정 */
+    }
+    canvas {
+      width: 100%;
+      height: 100px; /* 웨이브폼을 표시할 캔버스의 높이 */
+    }
+    .card {
+      opacity: 0.8;
+      transition: all 0.3s ease-in-out;
+      /* margin-top: 2rem; */
+      /* margin-bottom: 1rem; */
+    }
+    .card-title {
+        font-size: 2.5rem;
+    }
+    .card:hover {
+      transform: scale(1.15);
+      opacity: 1;
+    }
+
+    /* 아이콘과 텍스트 스타일 지정 */
+    .card .card-header i {
+      margin-right: 5px;
+      font-weight: bold;
+    }
+
+    /* 카드 확장 내용 */
+    .additional-info {
+      display: none;
+      font-size: 0.85em;
+      color: #fff;
+    }
+
+    .card:hover .additional-info {
+      display: block;
+    }
+
+    .progress {
+      height: 25px;
+      margin-bottom: 5rem;
+    }
+    .progress-bar {
+      line-height: 25px;
+      white-space: nowrap;
+      color: black;
+    }
+
+    /* 각 카드별 색상 지정 */
+    .card.bg-primary {
+      background-color: #007bff;
+    }
+
+    .card.bg-secondary {
+      background-color: #6c757d;
+    }
+
+    .card.bg-success {
+      background-color: #28a745;
+    }
+
+    .card.bg-info {
+      background-color: #17a2b8;
+    }
+
+    .card.bg-warning {
+      background-color: #ffc107;
+    }
+
+    .card.bg-danger {
+      background-color: #dc3545;
+    }
+
+    .card.bg-light {
+      background-color: #f8f9fa;
+      color: #212529;
+    }
+
+    .card.bg-dark {
+      background-color: #343a40;
+    }
+  </style>
 
 <body>
     <div class="container-xxl position-relative bg-white d-flex p-0">
@@ -184,14 +275,10 @@
             <!-- Navbar End -->
             
 
-
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
-
-
                     <div class="col-sm-12 col-xl-6">
                         <div class="bg-light rounded h-100 p-4">
-
                             <div id="point">
                                 <h6 class="mb-4">분석 결과</h6>
                                 <div class="pg-bar mb-3">
@@ -222,6 +309,132 @@
                         </div>
                     </div>
 
+
+            <div class="container">
+                <div class="row">
+                  <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                    <div class="card text-white bg-primary">
+                      <div class="card-header"><i class="fas fa-download"></i> 발화속도</div>
+                      <div class="card-body">
+                        <h5 class="card-title">00%</h5>
+                        <p class="card-text">평균보다 00% 빠르게 말해요</p>
+                        <p class="additional-info">More info about downloads</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                    <div class="card text-white bg-success">
+                      <div class="card-header"><i class="fas fa-download"></i> 필러워드</div>
+                      <div class="card-body">
+                        <h5 class="card-title">00개</h5>
+                        <p class="card-text">필러워드를 자주 사용해요</p>
+                        <p class="additional-info">More info about downloads</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                    <div class="card text-white bg-info">
+                      <div class="card-header"><i class="fas fa-download">발음점수</i> </div>
+                      <div class="card-body">
+                        <h5 class="card-title">00점</h5>
+                        <p class="card-text"> AI분석 결과 발음이 정확해요</p>
+                        <p class="additional-info">More info about downloads</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                    <div class="card text-white bg-warning">
+                      <div class="card-header"><i class="fas fa-download"></i> 키워드 강조</div>
+                      <div class="card-body">
+                        <h5 class="card-title">00%</h5>
+                        <p class="card-text">키워드가 잘 강조됐어요</p>
+                        <p class="additional-info">More info about downloads</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+              
+              
+              <div class="container my-5">
+                <div class="card">
+                  <div class="card-header">
+                    Progress Tracker
+                  </div>
+                  <div class="card-body">
+
+                    <h6>발화속도 <span class="float-right">00%</span></h6>
+                    <div class="progress mb-3">
+                      <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">20%</div>
+                    </div>
+                    
+
+                    <h6>필러워드 <span class="float-right">00%</span></h6>
+                    <div class="progress mb-3">
+                      <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">40%</div>
+                    </div>
+                    
+
+                    <h6>발음점수 <span class="float-right">00%</span></h6>
+                    <div class="progress mb-3">
+                      <div class="progress-bar bg-primary" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</div>
+                    </div>
+                    
+ 
+                    <h6>키워드강조 <span class="float-right">00%</span></h6>
+                    <div class="progress mb-3">
+                      <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+                    </div>
+                    
+                    <!-- Link to Task Center -->
+                    <div class="mt-4">
+                      <a href="#" class="btn btn-primary btn-block">Visit Task Center</a>
+                    </div>
+                  </div>
+                </div>
+
+              
+                <!-- https://media.w3.org/2010/05/sintel/trailer.mp4 -->
+                <div class="container mt-5">
+                    <div class="text-center mb-4">
+                        <h2>음성 녹음 및 웨이브폼 표시</h2>
+                        <p>아래 버튼을 눌러 녹음을 시작하세요.</p>
+                
+                        <!-- 비디오 플레이어 영역 -->
+                        <div class="row">
+                            <div class="col-12 mb-4">
+                                <div class="ratio ratio-16x9" style="max-height: 100%;">
+                                    <div id="videoPlaceholder" class="bg-light rounded shadow-lg d-flex justify-content-center align-items-center" style="width: 100%; height: 100%;">
+                                        <span class="text-muted">비디오 미리보기</span>
+                                    </div>
+                                    <video id="videoPlayer" class="rounded shadow-lg" style="width: 100%; height: 100%;"></video>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <!-- 웨이브폼 영역 -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div id="waveform" class="rounded shadow-lg" style="background-color: #f0f0f0; width: 100%; height: 200px;"></div>
+                            </div>
+                        </div>
+                
+                        <!-- 재생 컨트롤 버튼 -->
+                        <div class="row mt-3">
+                            <div class="col-12 text-center">
+                                <span id="timer" class="badge badge-light mb-2" style="font-size: 1.0rem; background-color: #28a745; color: white; padding: 10px;">00:00:00</span>
+                                <div class="mt-2">
+                                    <button id="playButton" class="btn btn-lg btn-success">재생</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+<!-- 
 
                     <div class="col-sm-12 col-xl-6">
                         <div class="bg-light rounded h-100 p-4">
@@ -278,7 +491,7 @@
 
 
                 </div>
-            </div>
+            </div> -->
 
             
 
@@ -320,9 +533,12 @@
     <script src="../lib/tempusdominus/js/moment.min.js"></script>
     <script src="../lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="../lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.283.1.min.js"></script>
 
     <!-- Template Javascript -->
     <script src="../js/main.js"></script>
+    <!-- <script src="../js/record.js"></script> -->
 </body>
 
 </html>
