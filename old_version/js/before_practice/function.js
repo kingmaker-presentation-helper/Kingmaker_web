@@ -35,10 +35,23 @@
         loop: true,
         nav : false
     });
+    var isppt = false;
+
+    $('#pptFile').change(function(){
+        var selectedFile = $(this).prop('files')[0];
+        if(selectedFile){
+            isppt = true;
+            console.log("선택된 파일: "+selectedFile.name, isppt);
+        } else{
+            isppt = false;
+            console.log("파일 선택하지 않음", isppt);
+        }
+    });
 
     // 발표 시작하기 버튼: 발표 제목, 키워드, 발표 날짜 localStorage로 넘기기 및 발표 연습으로 넘어가기
     $('#next').on('click', function(){
 
+        // 다음 페이지로 넘겨줄 데이터 선언
         var userData;
         var selectedDate = $('#calender').datetimepicker('date');
         var month = selectedDate.format('M');
@@ -54,9 +67,11 @@
                 month: month,
                 day: day,
                 title: title,
-                keyword: keyword
+                keyword: keyword,
+                ppt: isppt,
             };
-            localStorage.setItem('userData', JSON.stringify(userData));
+            var jsonString = JSON.stringify(userData);
+            localStorage.setItem('userData', jsonString);
             window.location.href='middle_practice.html';
         }
     });

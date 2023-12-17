@@ -118,47 +118,30 @@
             </nav>
             <!-- Navbar End -->
 
-            <!-- Sale & Revenue Start -->
+            <!-- 발표 관련 정보 start -->
             <div class="container-fluid pt-4 px-4">
-                <div class="row g-4">
+                <div class="row g-4 justify-content-center">
                     <div class="col-sm-6 col-xl-3">
                         <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-chart-line fa-3x text-primary"></i>
+                            <i class="fa fa-book fa-3x text-primary"></i>
                             <div class="ms-3">
-                                <p class="mb-2">누적 연습 횟수</p>
-                                <h6 class="mb-0">17번</h6>
+                                <p class="mb-2">제목</p>
+                                <h6 id="title" class="mb-0">발표 제목</h6>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6 col-xl-3">
                         <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-chart-bar fa-3x text-primary"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">최고 점수</p>
-                                <h6 class="mb-0">89점</h6>
-                            </div>  
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-chart-area fa-3x text-primary"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">총 연습 시간</p>
-                                <h6 class="mb-0">108분</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-chart-pie fa-3x text-primary"></i>
+                            <i class="fa fa-calendar-alt fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">다가오는 발표</p>
-                                <h6 class="mb-0">11월 24일</h6>
+                                <h6 id="date" class="mb-0">00월 00일</h6>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- 발표 관련 정보 end -->
 
 
 
@@ -179,8 +162,7 @@
 <!-- 음성 녹음 및 비디오 플레이어 섹션 -->
 <div class="container mt-5">
     <div class="text-center mb-4">
-        <h2>음성 녹음 및 웨이브폼 표시</h2>
-        <p>아래 버튼을 눌러 녹음을 시작하세요.</p>
+        <h2>아래 버튼을 눌러 녹음을 시작하세요.</h2>
 
         <!-- 비디오 플레이어 영역 -->
         <div class="row">
@@ -195,7 +177,7 @@
             </div>
         </div>
         <!-- 캐러셀 섹션 -->
-        <div class="container mt-5">
+        <div id=ppt class="container mt-5">
             <div class="row">
                 <div class="col-12 mb-4">
                     <!-- 캐러셀이 비디오 플레이어 크기와 동일하도록 설정 -->
@@ -260,7 +242,7 @@
             <div class="col-12 text-center">
                 <span id="timer" class="badge badge-light mb-2" style="font-size: 1.0rem; background-color: #28a745; color: white; padding: 10px;">00:00:00</span>
                 <div class="mt-2">
-                    <button id="recordButton" class="btn btn-lg btn-danger">녹음 시작</button>
+                    <button id="recordButton" class="btn btn-lg btn-danger">녹화 시작</button>
                     <button id="playButton" class="btn btn-lg btn-success ml-2">재생</button>
                 </div>
             </div>
