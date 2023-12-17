@@ -13,6 +13,11 @@
     $('#result').on('click', function(){
         localStorage.setItem('session_key', session);
         window.location.href="after_practice.html";
-    })
+    });
+
+    // 반복문으로 질문 1부터 15까지 자동으로 넣습니다.
+    for (var i=1;i<=15;i++){
+        $('#q'+i).text(i+"번째 질문");
+    }
 
 })(jQuery);

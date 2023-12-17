@@ -1,0 +1,165 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+  }
+  .video-container {
+    max-width: 600px; /* 이 값은 프로그레스 바 카드의 최대 너비와 일치해야 합니다. */
+    margin: auto; /* 가운데 정렬 */
+  }
+  video {
+    width: 100%; /* 반응형 비디오 사이즈 */
+    height: auto; /* 비디오의 높이를 자동으로 설정 */
+  }
+  canvas {
+    width: 100%;
+    height: 100px; /* 웨이브폼을 표시할 캔버스의 높이 */
+  }
+  .card {
+    opacity: 0.8;
+    transition: all 0.3s ease-in-out;
+    /* margin-top: 2rem; */
+    /* margin-bottom: 1rem; */
+  }
+  .card-title {
+      font-size: 2.5rem;
+  }
+  .card:hover {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3개의 칼럼 */
+  grid-template-rows: repeat(5, 1fr); /* 5개의 로우 */
+  gap: 10px; /* 카드 사이 간격 */
+  padding: 10px; /* 카드 컨테이너 안쪽 여백 */
+}
+.grid-card {
+    opacity: 0.8;
+    transition: all 0.3s ease-in-out;
+    /* margin-top: 2rem; */
+    /* margin-bottom: 1rem; */
+  }
+
+
+
+
+
+
+.additional-info {
+  display: none;
+  font-size: 0.85em;
+  color: #fff;
+}
+
+
+
+  /* 아이콘과 텍스트 스타일 지정 */
+  .card .card-header i {
+    margin-right: 5px;
+    font-weight: bold;
+  }
+
+  /* 카드 확장 내용 */
+  .additional-info {
+    display: none;
+    font-size: 0.85em;
+    color: #fff;
+  }
+
+  .card:hover .additional-info {
+    display: block;
+  }
+
+
+  .carousel {
+    opacity: 0.8;
+    transition: all 0.3s ease-in-out;
+    /* margin-top: 2rem; */
+    /* margin-bottom: 1rem; */
+  }
+  .carousel:hover {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  
+
+  .progress {
+    height: 25px;
+    margin-bottom: 5rem;
+  }
+  .progress-bar {
+    line-height: 25px;
+    white-space: nowrap;
+    color: black;
+  }
+
+  /* 각 카드별 색상 지정 */
+  .card.bg-primary {
+    background-color: #007bff;
+  }
+
+  .card.bg-secondary {
+    background-color: #6c757d;
+  }
+
+  .card.bg-success {
+    background-color: #28a745;
+  }
+
+  .card.bg-info {
+    background-color: #17a2b8;
+  }
+
+  .card.bg-warning {
+    background-color: #ffc107;
+  }
+
+  .card.bg-danger {
+    background-color: #dc3545;
+  }
+
+  .card.bg-light {
+    background-color: #f8f9fa;
+    color: #212529;
+  }
+
+  .card.bg-dark {
+    background-color: #343a40;
+  }
+  
+
+
+
+
+
+
+  .grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  padding: 10px;
+}
+
+.grid-card {
+  padding: 20px;
+  color: #fff;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.grid-card:hover {
+  /* transform: scale(1.05); */
+  opacity: 1;
+}
+.grid-card:hover .additional-info {
+    display: block;
+  }
+
+
+.card-bg-primary { background-color: #007bff; }
+.card-bg-secondary { background-color: #6c757d; }
+.card-bg-success { background-color: #28a745; }
+/* 다른 배경색을 가진 카드 클래스도 이와 같이 추가합니다. */
