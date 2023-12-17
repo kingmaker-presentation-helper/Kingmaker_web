@@ -1,6 +1,7 @@
 (function ($) {
     "use strict";
     var userDataString = localStorage.getItem('userData');
+    var userData = JSON.parse(userDataString);
     // userData 내용물
     // userData = {
     //     month: 월,
@@ -10,7 +11,6 @@
     //     ppt: ppt 유무
     // };
     if(userDataString){
-        var userData = JSON.parse(userDataString);
         // ppt 업로드 안했으면 ppt 부분 삭제합니다.
         var isppt = userData.ppt;
         if(!isppt){$('#ppt').remove();}
@@ -25,6 +25,13 @@
         alert("발표 데이터가 없습니다!");
         window.history.back();
     }
+
+    $('#endButton').on('click', function(){
+        isppt = userData.ppt;
+        // ppt 포함 여부를 다시 after practice로 보냅니다.
+        localStorage.setItem('isppt', isppt.toString());
+        window.location.href='after_practice.html';
+    })
 
 
 })(jQuery);
