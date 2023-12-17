@@ -26,12 +26,6 @@
         window.history.back();
     }
 
-    $('#endButton').on('click', function(){
-        isppt = userData.ppt;
-        // ppt 포함 여부를 다시 after practice로 보냅니다.
-        localStorage.setItem('isppt', isppt.toString());
-        window.location.href='after_practice.html';
-    })
 
-
+    
 })(jQuery);

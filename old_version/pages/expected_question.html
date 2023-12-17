@@ -48,20 +48,10 @@
                 <a href="index.html" class="navbar-brand mx-4 mb-3">
                     <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>KingMaker</h3>
                 </a>
-                <div class="d-flex align-items-center ms-4 mb-4">
-                    <div class="position-relative">
-                        <img class="rounded-circle" src="../img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
-                    </div>
-                    <div class="ms-3">
-                        <h6 class="mb-0">UserName</h6>
-                        <span>Role</span>
-                    </div>
-                </div>
                 <div class="navbar-nav w-100">
                     <a href="index.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="before_practice.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>연습 시작</a>
-                    <a href="after_practice.html" class="nav-item nav-link active"><i class="fa fa-th me-2"></i>연습 끝 (분석)</a>
+                    <a href="before_practice.html" class="nav-item nav-link"><i class="fa fa-play me-2"></i>연습 시작</a>
+                    <a href="after_practice.html" class="nav-item nav-link active"><i class="fa fa-chart-pie me-2"></i>연습 결과</a>
                 </div>
             </nav>
         </div>
@@ -105,7 +95,7 @@
                     </div>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="../img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                            <i class="fa fa-user" style="width: 40px; height: 40px;"></i>
                             <span class="d-none d-lg-inline-flex">UserName</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
@@ -122,7 +112,7 @@
                 <div class="row g-4">
                     <div class="bg-light rounded h-100 p-4">
                         <div class="text-center mb-4">
-                            <h6>아래 질문이 예상됩니다</h6>
+                            <h6>발표 예상 질문입니다</h6>
                             <div class="alert alert-secondary" role="alert">
                                 예상질문 1
                             </div>
@@ -137,7 +127,7 @@
 
 
                     <div class="text-center">
-                        <button type="button" class="btn btn-lg btn-primary m-2" style="width: 216px;">연습 마치기</button>
+                        <button id="result" type="button" class="btn btn-lg btn-primary m-2" style="width: 216px;">분석 결과 보러가기</button>
                     </div>
                 </div>
             </div>
@@ -183,6 +173,7 @@
 
     <!-- Template Javascript -->
     <script src="../js/main.js"></script>
+    <script src="../js/expected_question/function.js"></script>
 </body>
 
 </html>
