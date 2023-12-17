@@ -85,6 +85,18 @@
         wavesurfer.on('finish', function() {
             $('#playButton').text('재생');  // 버튼 텍스트 변경: 'Play'
         });
+    // 다운로드 버튼 클릭 이벤트 리스너
+    $('#downloadButton').click(function() {
+        const videoPath = filePath; // 실제 비디오 파일 경로를 여기에 입력하세요.
+        const fileName = videoPath.split('/').pop(); // URL에서 파일 이름 추출
 
+        // 다운로드를 위한 a 태그 생성 및 클릭 이벤트 발생
+        let a = document.createElement('a');
+        a.href = videoPath;
+        a.download = fileName || 'download.mp4';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    });
     });
 })(jQuery);

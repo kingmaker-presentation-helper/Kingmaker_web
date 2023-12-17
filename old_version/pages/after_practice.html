@@ -56,9 +56,10 @@
         font-size: 2.5rem;
     }
     .card:hover {
-      transform: scale(1.15);
+      transform: scale(1.05);
       opacity: 1;
     }
+    
 
     /* 아이콘과 텍스트 스타일 지정 */
     .card .card-header i {
@@ -76,6 +77,19 @@
     .card:hover .additional-info {
       display: block;
     }
+
+
+    .carousel {
+      opacity: 0.8;
+      transition: all 0.3s ease-in-out;
+      /* margin-top: 2rem; */
+      /* margin-bottom: 1rem; */
+    }
+    .carousel:hover {
+      transform: scale(1.05);
+      opacity: 1;
+    }
+    
 
     .progress {
       height: 25px;
@@ -293,16 +307,19 @@
                         </div>
                     </div>
             
-                    <!-- 재생 컨트롤 버튼 -->
-                    <div class="row mt-3">
-                        <div class="col-12 text-center">
-                            <span id="timer" class="badge badge-light mb-2" style="font-size: 1.0rem; background-color: #28a745; color: white; padding: 10px;">00:00:00</span>
-                            <div class="mt-2">
-                                <button id="playButton" class="btn btn-lg btn-success">재생</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- 컨트롤 버튼 영역 -->
+        <div class="row mt-3 justify-content-center">
+          <div class="col-auto">
+              <span id="timer" class="badge badge-light mb-2 h-100" style="font-size: 1.0rem; background-color: #28a745; color: white; padding: 10px; ;">00:00:00</span>
+          </div>
+          <div class="col-auto">
+              <button id="playButton" class="btn btn-lg btn-success h-100">재생</button>
+          </div>
+          <div class="col-auto">
+              <button id="downloadButton" class="btn btn-lg btn-info h-100">다운로드</button>
+          </div>
+      </div>
+  </div>
             </div>
 
                       <!-- 캐러셀 섹션 -->
