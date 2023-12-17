@@ -29,6 +29,42 @@
 
     <!-- Template Stylesheet -->
     <link href="../css/style.css" rel="stylesheet">
+
+    
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/chart/chart.min.js"></script>
+    <script src="../lib/easing/easing.min.js"></script>
+    <script src="../lib/waypoints/waypoints.min.js"></script>
+    <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="../lib/tempusdominus/js/moment.min.js"></script>
+    <script src="../lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="../lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.283.1.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="../js/main.js"></script>
+    <script src="../js/middle_practice/function.js"></script>
+    <script src="../js/record.js"></script>
+    <!-- Get SecretKey -->
+    <!--"http://localhost:9000/function/sessionkey"를 get 방식으로 호출해 secret key 저장 -->
+    <script>
+        var sessionkey = "";
+        $.ajax({
+            url: "http://localhost:9000/function/sessionkey",
+            type: "GET",
+            dataType: "json",
+            success: function(data) {
+                sessionkey = data.sessionkey;
+                console.log(sessionkey);
+            },
+            error: function(request, status, error) {
+                console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+            }
+        });
+    </script>
 </head>
 
 <body>
@@ -244,6 +280,7 @@
                 <div class="mt-2">
                     <button id="recordButton" class="btn btn-lg btn-danger">녹화 시작</button>
                     <button id="playButton" class="btn btn-lg btn-success ml-2">재생</button>
+                    <button id="endButton" class="btn btn-lg btn-danger ml-2">연습 종료</button>
                 </div>
             </div>
         </div>
@@ -275,23 +312,6 @@
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../lib/chart/chart.min.js"></script>
-    <script src="../lib/easing/easing.min.js"></script>
-    <script src="../lib/waypoints/waypoints.min.js"></script>
-    <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="../lib/tempusdominus/js/moment.min.js"></script>
-    <script src="../lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="../lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-    <script src="https://unpkg.com/wavesurfer.js"></script>
-    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.283.1.min.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="../js/main.js"></script>
-    <script src="../js/middle_practice/function.js"></script>
-    <script src="../js/record.js"></script>
 </body>
 
 </html>
