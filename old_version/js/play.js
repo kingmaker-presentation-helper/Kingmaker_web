@@ -25,8 +25,8 @@
             container: '#waveform',
             waveColor: 'violet',
             progressColor: 'purple',
-            barWidth: 3,
-            barHeight: 4,
+            barWidth: 1,
+            barHeight: 2,
         });
 
         let videoPlayer = document.getElementById('videoPlayback');
