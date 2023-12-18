@@ -1,7 +1,23 @@
 (function ($) {
     "use strict";
 
-    $(document).ready(function() {
+
+    async function updateVideo() {
+        let data;
+        try {
+            const response = await fetch(`http://127.0.0.1:9000/data/download/video/${sessionkey}?session_key=${sessionkey}`);
+            data = await response.blob(); // Blob 객체로 변환
+        } catch (error) {
+            console.error('데이터를 가져오는데 실패했습니다.', error);
+            return;
+        }
+
+        if (data) {
+            return URL.createObjectURL(data);
+        }
+    }
+
+    $(document).ready(async function() {
         // 영상 및 오디오 로딩 시작 시 로딩 인디케이터 표시
         $('#loadingIndicator').show();
         // WaveSurfer 초기화
@@ -14,11 +30,15 @@
         });
 
         let videoPlayer = document.getElementById('videoPlayback');
-
+        videoPlayer.muted = true; // 비디오 플레이어의 오디오 뮤트
+        
         // 파일 경로 (미리 정의된 경로 또는 서버에서 받아온 경로)
-        const filePath = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
+        // const filePath = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
+        // const filePath = localStorage.getItem("videoPath");
+        // Object URL 사용
+        const filePath = await updateVideo();
 
-        // 영상과 웨이브폼 로드
+        // 영상과 웨이브폼 로드 
         videoPlayer.src = filePath;
         wavesurfer.load(filePath);
 

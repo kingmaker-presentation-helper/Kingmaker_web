@@ -6,6 +6,7 @@ window.onload = function() {
     updateFillerword();
     updatePronunciation();
     updateHighlighted();
+
 };
 
 async function updateDuration() {
@@ -41,7 +42,6 @@ async function updateFillerword() {
     }
 
     const fillerwordElement = document.getElementById("fillerword");
-    console.log(fillerwordElement)
     if (data && fillerwordElement) {
         // 총합을 계산
         let total = 0;
@@ -87,9 +87,9 @@ async function updatePronunciation() {
 async function updateHighlighted() {
     let data;
     try {
-        const response = await fetch('http://127.0.0.1:9000/data/highlight/${sessionkey}?session_key=${sessionkey}');
+        const response = await fetch(`http://127.0.0.1:9000/data/highlight/${sessionkey}?session_key=${sessionkey}`);
         data = await response.json();
-        console.log("받은 데이터:", data);
+        // console.log("받은 데이터:", data);
     } catch (error) {
         console.error('데이터를 가져오는데 실패했습니다.', error);
         return;
@@ -112,4 +112,8 @@ async function updateHighlighted() {
         highlightedElement.querySelector('.card-text').innerText = "키워드를 잘 강조했어요!";
         highlightedElement.querySelector('.additional-info').innerText = `${wordsList} 키워드를 위주로 발표했어요!`;
     }
+
 }
+
+
+
