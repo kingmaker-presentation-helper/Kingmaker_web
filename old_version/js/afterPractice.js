@@ -3,6 +3,9 @@ var finalScore = 100;
 
 var speedStandard = 110;
 
+var finalScoreHighStandard = 60;
+var finalScoreMiddleStandard = 40;
+
 
 var fillerwordHighStandard = 10;
 var fillerwordMiddleStandard = 5;
@@ -10,8 +13,7 @@ var fillerwordMiddleStandard = 5;
 var pronunciationHighStandard = 70;
 var pronunciationMiddleStandard = 50;
 
-// var highlightedHighStandard = 0.005;
-// var highlightedMiddleStandard = 0.001;
+
 
 var highlightedHighStandard = 70;
 var highlightedMiddleStandard = 50;
@@ -125,7 +127,7 @@ async function updateFillerword() {
         } else if (total <= fillerwordHighStandard) {
             colorClass = 'bg-warning';
             textContent = "필러워드 사용이 보통입니다. 개선이 가능해요!";
-            progressValue = 60;
+            progressValue = 100 - total*6.5;
             finalScore -= 5;
         } else {
             colorClass = 'bg-danger';
@@ -424,10 +426,10 @@ function updateFinalScore() {
 
         finalScoreCardHeader.classList.remove("bg-primary", "bg-warning", "bg-danger");
 
-        if (finalScore >= 75) {
+        if (finalScore >= finalScoreHighStandard) {
             finalScoreCardHeader.classList.add("bg-primary");
             finalScoreMessage.textContent = "훌륭합니다! 아주 잘 하셨어요!";
-        } else if (finalScore >= 50) {
+        } else if (finalScore >= finalScoreMiddleStandard) {
             finalScoreCardHeader.classList.add("bg-warning");
             finalScoreMessage.textContent = "좋은 시도였어요! 조금 더 연습하면 더 좋아질 거예요!";
         } else {
