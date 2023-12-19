@@ -43,15 +43,167 @@
     <script src="../lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
     <script src="https://unpkg.com/wavesurfer.js"></script>
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.283.1.min.js"></script>
+    <!-- Template Javascript -->
+    <script>
+        async function getSessionKey() {
+            try {
+                const response = await $.ajax({
+                    url: "http://localhost:9000/function/sessionkey",
+                    type: "GET",
+                    dataType: "json",
+                });
+
+                return response.sessionkey;
+            } catch (error) {
+                console.log("Error getting session key:", error);
+                throw error;
+            }
+        }
+
+        async function fetchUserData() {
+            try {
+                var userDataString = localStorage.getItem('userData');
+                var userData = JSON.parse(userDataString);
+                return userData;
+            } catch (error) {
+                console.log("Error fetching user data:", error);
+                throw error;
+            }
+        }
+
+        async function main() {
+            try {
+                // Use Promise.all to concurrently fetch session key and user data
+                const [sessionkey, userData] = await Promise.all([getSessionKey(), fetchUserData()]);
+
+                console.log(sessionkey);
+                console.log(userData);
+
+                if (userData) {
+                    var isppt = userData.ppt;
+                    if (!isppt) { $('#ppt').remove(); }
+
+                    $("#title").text(userData.title);
+                    $('#date').text(userData.month + '월 ' + userData.day + '일');
+                    console.log('날짜: ' + userData.month + '월 ' + userData.day + '일\n제목: ' +
+                        userData.title + ' 키워드: ' + userData.keyword + '\nppt 유무: ' + isppt);
+                    userData.sessionKey = sessionkey;
+                    console.log(userData);
+
+                    // Use Promise to wrap the asynchronous AJAX call
+                    await new Promise((resolve, reject) => {
+                        $.ajax({
+                            url: 'http://localhost:9000/function/info/',
+                            type: 'POST',
+                            contentType: 'application/json',
+                            data: JSON.stringify(userData),
+                            success: function (data) {
+                                console.log(data);
+                                resolve();
+                            },
+                            error: function (err) {
+                                console.log(err);
+                                reject(err);
+                            }
+                        });
+                    });
+                } else {
+                    alert("발표 데이터가 없습니다!");
+                    window.history.back();
+                }
+
+                // Now that main() is completed, load record.js
+                $.getScript("../js/record.js", function () {
+                    console.log("record.js loaded");
+                });
+            } catch (error) {
+                console.error("An error occurred:", error);
+            }
+        }
+
+        // Call the main function
+        main();
+    </script>
+    <!-- <script src="../js/record.js"></script> -->
 
     <!-- Template Javascript -->
-    <script src="../js/main.js"></script>
-    <script src="../js/record.js"></script>
+    <!-- <script src="../js/main.js"></script> -->
+    <!-- <script src="../js/record.js"></script> -->
     <!-- Get SecretKey -->
     <!--"http://localhost:9000/function/sessionkey"를 get 방식으로 호출해 secret key 저장 -->
     <!-- <script>
         
-    </script> -->
+        async function getSessionKey() {
+            try {
+                const response = await $.ajax({
+                    url: "http://localhost:9000/function/sessionkey",
+                    type: "GET",
+                    dataType: "json",
+                });
+
+                return response.sessionkey;
+            } catch (error) {
+                console.log("Error getting session key:", error);
+                throw error; // 예외 처리를 원하는 방식으로 진행하거나 상위로 던집니다.
+            }
+        }
+        async function main() {
+            try {
+                var sessionkey = await getSessionKey();
+                console.log(sessionkey)
+                var userDataString = localStorage.getItem('userData');
+                var userData = JSON.parse(userDataString);
+
+                userData.sessionKey = sessionkey;
+                console.log(userData);
+
+                // 이후에 userData를 사용하여 다른 작업 수행
+                if(userDataString){
+                    // ppt 업로드 안했으면 ppt 부분 삭제합니다.
+                    var isppt = userData.ppt;
+                    if(!isppt){$('#ppt').remove();}
+
+                    $("#title").text(userData.title);
+                    $('#date').text(userData.month+'월 '+userData.day+'일');
+                    // localStorage.removeItem('userData');
+                    console.log('날짜: '+userData.month+'월 '+userData.day+'일\n제목: '
+                        +userData.title+' 키워드: '+userData.keyword+'\nppt 유무: '+isppt);
+                    console.log(userDataString)
+                    // userDataString의 타입 log
+                    console.log(typeof(userDataString));
+                    // localhost:9000/function/info로 post로 정보 전송
+                    $.ajax({
+                        url: 'http://localhost:9000/function/info/',  
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify(userData), // userData를 JSON 문자열로 변환
+                        success: function(data){
+                            console.log(data);
+                        },
+                        error: function(err){
+                            console.log(err);
+                        }
+                    });
+                }
+                else{
+                    alert("발표 데이터가 없습니다!");
+                    window.history.back();
+                }
+
+                // 앞에 코드들이 다 끝나고 "../js/record.js" 실행
+                // $.getScript("../js/middle_practice/record.js", function(){
+                //     console.log("record.js loaded");
+                // });
+            } catch (error) {
+                console.error("An error occurred:", error);
+            }
+        }
+
+        // Call the main function
+        main();
+    </script>
+    <script src="../js/record.js"></script> -->
+
 </head>
 
 <body>
