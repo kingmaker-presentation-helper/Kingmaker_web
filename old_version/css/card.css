@@ -163,3 +163,9 @@ body {
 .card-bg-secondary { background-color: #6c757d; }
 .card-bg-success { background-color: #28a745; }
 /* 다른 배경색을 가진 카드 클래스도 이와 같이 추가합니다. */
+
+
+.score-unit {
+    font-size: 1.5rem; /* 이 값은 원하는 대로 조절 가능 */
+    vertical-align: baseline;
+}

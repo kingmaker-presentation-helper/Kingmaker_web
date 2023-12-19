@@ -34,7 +34,7 @@ window.onload = async function() {
     updateKeywords(),
     updateTextContent(),
     updateInfo(),
-]);
+    ]);
     updateFinalScore();
 };
 
@@ -405,29 +405,25 @@ async function updateInfo() {
     }
 }
 
-
-
-
-
-
-
-
-
 function updateFinalScore() {
     var finalScoreDisplay = document.getElementById("final-score-display");
     var finalScoreCardHeader = document.getElementById("final-score-header");
+    var finalScoreMessage = document.querySelector('.card-body .lead');
 
-    if (finalScoreDisplay && finalScoreCardHeader) {
-        finalScoreDisplay.textContent = finalScore; // 최종 점수 업데이트
+    if (finalScoreDisplay && finalScoreCardHeader && finalScoreMessage) {
+        finalScoreDisplay.innerHTML = finalScore + "<span class='score-unit'>점</span>"; // 숫자와 '점'을 각각 표시
 
         finalScoreCardHeader.classList.remove("bg-primary", "bg-warning", "bg-danger");
 
         if (finalScore >= 75) {
             finalScoreCardHeader.classList.add("bg-primary");
+            finalScoreMessage.textContent = "훌륭합니다! 아주 잘 하셨어요!";
         } else if (finalScore >= 50) {
             finalScoreCardHeader.classList.add("bg-warning");
+            finalScoreMessage.textContent = "좋은 시도였어요! 조금 더 연습하면 더 좋아질 거예요!";
         } else {
             finalScoreCardHeader.classList.add("bg-danger");
+            finalScoreMessage.textContent = "노력한 흔적이 보여요! 계속 연습하면 더 좋아질 수 있습니다!";
         }
     }
 }

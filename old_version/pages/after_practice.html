@@ -124,17 +124,18 @@
                   </div>
               </div>
           </div>
-          
+
           
             <div class="container mt-5">
               <!-- Final Score Card -->
-              <div class="card text-center">
-                  <div class="card-header" id="final-score-header">
-                      최종 점수
+              <div class="card text-center ">
+                  <div class="card-header text-white" style="text-align: left;" id="final-score-header">
+                    <i class="fas fa-paw" ></i> 최종점수
                   </div>
                   <div class="card-body">
-                      <h1 id="final-score-display" class="display-1">0</h1>
-                      <p class="lead">Your Presentation Score</p>
+                    <h1 id="final-score-display" class="display-1">0<span class="score-unit">점</span></h1>
+                    <p class="lead">Your Presentation Score</p>
+                
           
                       <!-- Cards for Speed, Filler Words, Pronunciation, Highlighted Keywords inside the Final Score Card -->
                       <div class="row pt-4">
@@ -239,40 +240,57 @@
                   
                 </div>
               </div> -->
-              <div class="container my-5 text-center">
-                <div class="card">
-                  <div class="card-header">
-                    Progress Tracker
+
+
+
+
+
+            <!-- Progress Tracker Section -->
+            <div class="container my-5 text-center">
+              <div class="card">
+                  <div class="card-header bg-primary text-white" style="text-align: left;">
+                    <i class="fas fa-tasks"></i> Progress Tracker
                   </div>
                   <div class="card-body">
-                    <!-- 발화속도 -->
-                    <h6 >발화속도 <span id="speed-percentage" class="float-right">ㅤ</span></h6>
-                    <div class="progress mb-3">
-                      <div id="speed-progress" class="progress-bar bg-danger" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="card-header">
+                      Progress Tracker
                     </div>
-                    
-                    <!-- 필러워드 -->
-                    <h6>필러워드 <span id="fillerword-percentage" class="float-right">ㅤ</span></h6>
-                    <div class="progress mb-3">
-                      <div id="fillerword-progress" class="progress-bar bg-warning" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    
-                    <!-- 발음점수 -->
-                    <h6>발음점수 <span id="pronunciation-percentage" class="float-right">ㅤ</span></h6>
-                    <div class="progress mb-3">
-                      <div id="pronunciation-progress" class="progress-bar bg-primary" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    
-                    <!-- 키워드강조 -->
-                    <h6>키워드강조 <span id="highlighted-percentage" class="float-right">ㅤ</span></h6>
-                    <div class="progress mb-3">
-                      <div id="highlighted-progress" class="progress-bar bg-info" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="card-body">
+                      <!-- 발화속도 -->
+                      <h6 >발화속도 <span id="speed-percentage" class="float-right">ㅤ</span></h6>
+                      <div class="progress mb-3">
+                        <div id="speed-progress" class="progress-bar bg-danger" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      
+                      <!-- 필러워드 -->
+                      <h6>필러워드 <span id="fillerword-percentage" class="float-right">ㅤ</span></h6>
+                      <div class="progress mb-3">
+                        <div id="fillerword-progress" class="progress-bar bg-warning" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      
+                      <!-- 발음점수 -->
+                      <h6>발음점수 <span id="pronunciation-percentage" class="float-right">ㅤ</span></h6>
+                      <div class="progress mb-3">
+                        <div id="pronunciation-progress" class="progress-bar bg-primary" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      
+                      <!-- 키워드강조 -->
+                      <h6>키워드강조 <span id="highlighted-percentage" class="float-right">ㅤ</span></h6>
+                      <div class="progress mb-3">
+                        <div id="highlighted-progress" class="progress-bar bg-info" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
                     </div>
                   </div>
-                </div>
+              </div>
             </div>
+
+
             
-              
+
+
+
+
+            
 
               <!-- https://media.w3.org/2010/05/sintel/trailer.mp4 -->
               <div class="container mt-5">
@@ -493,6 +511,8 @@
 
 <!-- 텍스트 및 다운로드 버튼 섹션 -->
 <div class="container mt-4">
+  <h1>ㅤ</h1>
+  <h2>발표 문장 다시보기</h2>  
   <div class="card">
       <div class="card-header">
           텍스트 내용
