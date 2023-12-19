@@ -1,7 +1,5 @@
 가천대학교 소프트웨어학과 졸업작품
 
-<img src="https://github.com/kingmaker-presentation-helper/Presentation_Helper/assets/57437648/f24511d5-221e-4cd8-ac32-bcbfd5406113">
-
 발표 연습에 도움이 되는 사이트
 
 # Website Instruction
