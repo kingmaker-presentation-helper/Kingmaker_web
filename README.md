@@ -24,13 +24,13 @@ Refer to the wiki page for detailed instructions.
 
 ### Technologies Used
 1. backend
-- etri api
-- gpt api
-- mideapipe api
+- [etri api](https://aiopen.etri.re.kr/)
+- [gpt api](https://openai.com/blog/openai-api)
+- [mideapipe api](https://developers.google.com/mediapipe/api/solutions)
 2. frontend
-- DASHMIN template
-- Bootstrap 5 framework
-- Font Awesome framework
+- [DASHMIN template](https://themewagon.com/themes/dashmin-responsive-free-bootstrap-5-html5-admin-dashboard-template/)
+- [Bootstrap 5 framework](https://getbootstrap.kr/docs/5.0/getting-started/introduction/)
+- [Font Awesome framework](https://fontawesome.com/)
 
 ### Team Introduction
 1. 김세중 rlatpwnd0049@naver.com
@@ -41,4 +41,6 @@ Refer to the wiki page for detailed instructions.
 # wiki
 github wiki는 private repository에서 생성 불가
 repository를 public으로 수정한 다음에 복붙하기
+
+# Kingmaker Web
 
