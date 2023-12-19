@@ -50,7 +50,8 @@ wiki
 
 ## 목차
 1. 페이지별 가이드
-2. 기능별 사용한 기술
+2. 시스템 구조
+3. 사용한 기술
 
 
 ## 페이지별 가이드
@@ -92,9 +93,13 @@ wiki
 7) '발표 문장 다시보기'에서는 어떤 말을 했는지 적혀 있으며, 다운로드 가능하다.
 
 
-## 사용한 기술
+## 시스템 구조
+<img src="https://github.com/kingmaker-presentation-helper/Kingmaker_web/assets/57437648/5e9db717-dfde-429c-9fc8-0c8c931ea826">
 
-1. etri api
-- 
-3. gpt api
-4. mideapipe api
+
+## 사용한 기술
+- Jenkins: github push를 이벤트로 받아 프런트, 백엔드의 코드를 수정한다.
+- NGINX: 클라이언트에게 웹페이지를 제공하는 프런트를 담당한다.
+- uvicorn: 프런트에서 요청할 수 있도록 여러 api를 제공하는 백엔드를 담당한다.
+- FastAPI: 백엔드의 기능을 api화 하여 프런트의 요청을 쉽게 처리한다.
+- librosa: 오디오를 분석해 다양한 특징을 추출할 수 있다.
