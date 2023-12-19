@@ -1,7 +1,7 @@
 # Kingmaker Web
 
 
-### Project Introduction
+## Project Introduction
 
 프로젝트에서 이루고자 하는 목적 설명
 
