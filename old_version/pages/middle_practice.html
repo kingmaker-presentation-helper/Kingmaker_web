@@ -75,7 +75,8 @@
             try {
                 // Use Promise.all to concurrently fetch session key and user data
                 const [sessionkey, userData] = await Promise.all([getSessionKey(), fetchUserData()]);
-
+                
+                sessionStorage.setItem('sessionkey', sessionkey);
                 console.log(sessionkey);
                 console.log(userData);
 
@@ -116,14 +117,21 @@
                 $.getScript("../js/record.js", function () {
                     console.log("record.js loaded");
                 });
+                // $.getScript("../js/middle_practice/function.js", function () {
+                //     console.log("middle_practice/function.js loaded");
+                // });
             } catch (error) {
                 console.error("An error occurred:", error);
             }
         }
 
         // Call the main function
+        console.log("Before main function");
         main();
+        console.log("After main function");
     </script>
+    <!-- <script defer src="../js/record.js"></script> -->
+    <!-- <script defer src="../js/middle_practice/function.js"></script> -->
     <!-- <script src="../js/record.js"></script> -->
 
     <!-- Template Javascript -->
@@ -209,11 +217,11 @@
 <body>
     <div class="container-xxl position-relative bg-white d-flex p-0">
         <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <!-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
-        </div>
+        </div> -->
         <!-- Spinner End -->
 
 
@@ -441,7 +449,7 @@
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
 
-    <script src="../js/middle_practice/function.js"></script>
+    <!-- <script src="../js/middle_practice/function.js"></script> -->
 </body>
 
 </html>
