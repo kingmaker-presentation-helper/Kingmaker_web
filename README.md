@@ -21,7 +21,6 @@
 Navigated from the _Main Page_ to the __발표 연습하러 하기__ button
 
 <img src="https://github.com/kingmaker-presentation-helper/Presentation_Helper/assets/57437648/328f96b1-78f5-4e6a-b05c-38d7c94fdb44">
-<img src="https://github.com/kingmaker-presentation-helper/Presentation_Helper/assets/57437648/9153d729-57ec-41e9-9761-88925ad1fab8">
 
 
 ### Record Presentation
