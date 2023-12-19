@@ -109,35 +109,47 @@ wiki
 
 
 ## 사용한 기술
+
 <img src="https://github.com/kingmaker-presentation-helper/Kingmaker_web/assets/57437648/6699046f-4aa2-4694-a778-d5dc66460666">
+
 - github: 코드의 버전 관리, 협업 등 개발자의 편의를 지원한다.
+
 ![image](https://github.com/kingmaker-presentation-helper/Kingmaker_web/assets/57437648/0912061f-3474-40ae-8d8d-3d41977c2d4a)
 
 - Amazon Lightsail: 아마존에서 제공하는 클라우드 컴퓨팅 서비스이다.
+
 ![image](https://github.com/kingmaker-presentation-helper/Kingmaker_web/assets/57437648/e53e69ef-ae3a-444f-9bf1-799d5566f25b)
 
 - Jenkins: github push를 이벤트로 받아 프런트, 백엔드의 코드를 수정한다.
+
 ![image](https://github.com/kingmaker-presentation-helper/Kingmaker_web/assets/57437648/b6a23b8e-5544-4188-94c0-63eb179292e0)
 
 - NGINX: 클라이언트에게 웹페이지를 제공하는 프런트를 담당한다.
+
 ![image](https://github.com/kingmaker-presentation-helper/Kingmaker_web/assets/57437648/6bdb5bd8-3f78-4ed1-9187-21110e12a9e2)
 
 - uvicorn: 프런트에서 요청할 수 있도록 여러 api를 제공하는 백엔드를 담당한다.
+
 ![image](https://github.com/kingmaker-presentation-helper/Kingmaker_web/assets/57437648/9d8f0551-b51d-4565-adcd-7c7acad94551)
 
 - FastAPI: 백엔드의 기능을 api화 하여 프런트의 요청을 쉽게 처리한다.
+
 ![image](https://github.com/kingmaker-presentation-helper/Kingmaker_web/assets/57437648/885d2672-a5c6-4c8c-a974-f3761266e3cb)
 
 - librosa: 오디오를 분석해 파형 분석, 시간 축 조정 등을 구현한다.
+
 ![image](https://github.com/kingmaker-presentation-helper/Kingmaker_web/assets/57437648/c47fee7c-a999-49ea-9636-4310e2b096a2)
 
 - ETRI api: 한국 전자 통신 연구기관에서 제공하는 api로 음성을 분석하고 글 형태로 변환할 수 있다.
+
 ![image](https://github.com/kingmaker-presentation-helper/Kingmaker_web/assets/57437648/70ebf166-7caa-4b93-9c05-b6e2294fd003)
 
 - Kiwi: 한국어 형태소 분석, 명사 추출 등의 기능을 수행한다.
+
 ![image](https://github.com/kingmaker-presentation-helper/Kingmaker_web/assets/57437648/f6a2b411-80bc-4325-9e25-e61f41f9cac0)
 
 - GPT api: openai에서 제공하는 api로 질문, 총평 등을 생성한다.
+
 ![image](https://github.com/kingmaker-presentation-helper/Kingmaker_web/assets/57437648/f2c3534d-9a7a-4d94-86c1-7f10b06b1206)
 
 - Mediapipe api: 영상에서 사람의 포즈를 인식한다.
