@@ -169,3 +169,7 @@ body {
     font-size: 1.5rem; /* 이 값은 원하는 대로 조절 가능 */
     vertical-align: baseline;
 }
+.carousel-control-prev, .carousel-control-next {
+  top: 60%; /* 버튼을 캐러셀 높이의 중앙에 위치시킵니다 */
+  transform: translateY(-50%); /* 버튼을 정확히 중앙으로 정렬하기 위해 Y축으로 50%만큼 이동시킵니다 */
+}
