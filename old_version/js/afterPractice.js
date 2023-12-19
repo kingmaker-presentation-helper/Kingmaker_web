@@ -7,18 +7,21 @@ var speedStandard = 110;
 var fillerwordHighStandard = 10;
 var fillerwordMiddleStandard = 5;
 
-var pronunciationHighStandard = 60;
+var pronunciationHighStandard = 70;
 var pronunciationMiddleStandard = 50;
 
-var highlightedHighStandard = 0.005;
-var highlightedMiddleStandard = 0.001;
+// var highlightedHighStandard = 0.005;
+// var highlightedMiddleStandard = 0.001;
+
+var highlightedHighStandard = 70;
+var highlightedMiddleStandard = 50;
 
 var EmMiddleStandard = 0.005;
 var EmHighStandard = 0.1;
 // 새로 추가된 전역 변수들
 var standardWordsPerSecond = 1.7; //초당 발화 수의 기준
 var pronunciationScoreMultiplier = 20; //발음 평가 점수에 곱하는 상수 
-var highlightedScoreMultiplier = 1000;//em평가 점수에 곱하는 상수
+var highlightedScoreMultiplier = 1500;//em평가 점수에 곱하는 상수
 
 
 // const sessionkey = localStorage.getItem("session_key")
@@ -281,10 +284,10 @@ async function updatePose() {
             // 캐러셀 캡션 추가
             const caption = document.createElement('div');
             caption.className = 'carousel-caption d-none d-md-block';
-            caption.innerHTML = `
-                <h5>Slide ${index + 1}</h5>
-                <p>Some representative placeholder content for slide ${index + 1}.</p>
-            `;
+            // caption.innerHTML = `
+            //     <h5>Slide ${index + 1}</h5>
+            //     <p>Some representative placeholder content for slide ${index + 1}.</p>
+            // `;
             carouselItem.appendChild(caption);
 
             const indicator = document.createElement('button');
@@ -345,7 +348,10 @@ async function updateKeywords() {
 async function updateTextContent() {
     try {
         const response = await fetch(`http://127.0.0.1:9000/data/statement/${sessionkey}?session_key=${sessionkey}`);
-        const textData = await response.text(); // 텍스트 데이터를 받아옴
+        let textData = await response.text(); // 텍스트 데이터를 받아옴
+
+        // 문자열 시작과 끝의 따옴표 및 문자열 내의 '\n' 문자 제거
+        textData = textData.replace(/^"|"$/g, '').replace(/\\n/g, '');
 
         const textElement = document.getElementById("text-content");
         if (textElement) {
@@ -355,6 +361,9 @@ async function updateTextContent() {
         console.error('텍스트 데이터를 가져오는데 실패했습니다.', error);
     }
 }
+
+
+
 
 function download(filename, text) {
     var element = document.createElement('a');
