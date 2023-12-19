@@ -3,26 +3,26 @@
 
 ## Project Introduction
 
-발표를 연습함에 있어 주변에 피드백이 필요한 사람들을 돕기 위한 발표 연습 웹사이트
+This presentation practice website was designed to assist individuals seeking feedback in their presentation rehearsals.
 
-### 주요 기능
+### Key Features
 
-1. 발표 녹화: 발표를 분석할 서버로 녹화한 파일을 전송
-2. 질문 생성: 발표 발언을 분석해 질문 생성
-4. 음성 분석: 발화 속도, 필러워드, 발음 정확도, 키워드 강조 항목으로 세분화 하여 분석
-5. 동작 분석: 발표 동작을 분석해 청취자의 주목을 끌 수 있는 동작을 엄선
-6. 발표 다시보기: 자신의 발표 영상과 발언을 받아쓴 글을 보거나 저장할 수 있음
+1. Presentation Recording: Upload recorded files to the server for analysis
+2. Question Generation: Generate questions based on the content of the presentation.
+4. Speech analysis: Analyze speech speed, filler words, pronunciation accuracy, and emphasized keywords.
+5. Gesture Analysis: Analyze presentation gestures to select engaging movements for capturing the audience's attention.
+6. Presentation Review: View or save recorded video and transcribed speech.
 
-### 프로젝트 시작 계기
+### Project Inception
 
-기존의 발표 연습 보조 도구들은 영상 녹화 기능이나 받아쓰기 정도의 기능만 제공할 뿐 발표에 대한 피드백은 전무했다. 더 효율적인 발표 연습을 위해 영상 녹화, 받아쓰기에 더불어 발표를 분석하고 피드백하는 도구를 만들어 많은 사람들에게 효율적인 발표 연습을 제공하고자 한다.
+Existing presentation rehearsal tools lacked comprehensive feedback features, offering only video recording or basic transcription. To enhance presentation practice efficiency, the goal is to create a tool that not only records and transcribes but also analyzes and provides feedback on the presentation.
 
-### 프로젝트 이용 방법
-위키 페이지
+### How to Use this website
+Refer to the wiki page for detailed instructions.
 
-## 사용한 기술 및 팀원 소개
+## Technologies Used and Team Introduction
 
-### 사용한 기술
+### Technologies Used
 1. backend
 - etri api
 - gpt api
@@ -32,7 +32,7 @@
 - Bootstrap 5 framework
 - Font Awesome framework
 
-### 팀원 소개
+### Team Introduction
 1. 김세중 rlatpwnd0049@naver.com
 2. 송윤수 harry7292@gachon.ac.kr
 3. 이지해 haeye2014@gachon.ac.kr
