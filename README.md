@@ -36,3 +36,9 @@ Refer to the wiki page for detailed instructions.
 1. 김세중 rlatpwnd0049@naver.com
 2. 송윤수 harry7292@gachon.ac.kr
 3. 이지해 haeye2014@gachon.ac.kr
+
+
+# wiki
+github wiki는 private repository에서 생성 불가
+repository를 public으로 수정한 다음에 복붙하기
+
