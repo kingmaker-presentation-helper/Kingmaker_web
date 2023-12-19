@@ -289,7 +289,8 @@
     <script>
         async function updateQuestions() {
             try {
-                const sessionkey = localStorage.getItem("session_key")
+                const sessionkey = sessionStorage.getItem("sessionkey");
+                console.log("sessionkey: ", sessionkey);
             
                 const response = await fetch(`http://127.0.0.1:9000/data/question/${sessionkey}?session_key=${sessionkey}`);
                 const questions = await response.json();
