@@ -1,4 +1,6 @@
 // 전역 변수 설정
+var finalScore = 100;
+
 var speedStandard = 110;
 
 
@@ -19,18 +21,21 @@ var pronunciationScoreMultiplier = 20; //발음 평가 점수에 곱하는 상�
 var highlightedScoreMultiplier = 1000;//em평가 점수에 곱하는 상수
 
 
-const sessionkey = localStorage.getItem("session_key")
-// const sessionkey = "test"
+// const sessionkey = localStorage.getItem("session_key")
+const sessionkey = "test"
 
-window.onload = function() {
-    updateSpeed();
-    updateFillerword();
-    updatePronunciation();
-    updateHighlighted();
-    updatePose();
-    updateKeywords();
-    updateTextContent();
-    updateInfo();
+window.onload = async function() {
+    await Promise.all([
+    updateSpeed(),
+    updateFillerword(),
+    updatePronunciation(),
+    updateHighlighted(),
+    updatePose(),
+    updateKeywords(),
+    updateTextContent(),
+    updateInfo(),
+]);
+    updateFinalScore();
 };
 
 
@@ -58,12 +63,14 @@ async function updateSpeed() {
             colorClass = 'bg-warning';
             textContent = "조금 느긋한 편이네요. 천천히 말하는 것도 좋지만, 조금만 속도를 높여보는 건 어떨까요?";
             progressValue = 50;
+            finalScore -= 10;
         }
         
         if (percentage >= speedStandard + 10) {
             colorClass = 'bg-danger';
             textContent = "빠르게 말하고 있어요! 열정이 느껴지지만, 청중이 따라갈 수 있도록 속도를 조금 줄여보세요.";
             progressValue = 50;
+            finalScore -= 10;
         }
 
         SpeedElement.className = `card text-white ${colorClass} h-100`;
@@ -116,10 +123,12 @@ async function updateFillerword() {
             colorClass = 'bg-warning';
             textContent = "필러워드 사용이 보통입니다. 개선이 가능해요!";
             progressValue = 60;
+            finalScore -= 5;
         } else {
             colorClass = 'bg-danger';
             textContent = "필러워드 사용이 많습니다. 주의가 필요해요!";
             progressBarValue = 25;
+            finalScore -= 10;
         }
 
         fillerwordElement.querySelector('.card-title').innerText = total + "개";
@@ -161,12 +170,14 @@ async function updatePronunciation() {
             progressBarValue = 100;
         } else if (score >= pronunciationMiddleStandard) {
             colorClass = 'bg-warning';
-            textContent = 60;
+            textContent = "발음이 보통입니다. 개선가능해요!";
             progressBarValue = score;
+            finalScore -= 5;
         } else {
             colorClass = 'bg-danger';
             textContent = "발음이 개선이 필요해요!";
             progressBarValue = 25;
+            finalScore -= 10;
         }
 
         pronunciationElement.querySelector('.card-title').innerText = score.toFixed(2) + "점";
@@ -213,12 +224,14 @@ async function updateHighlighted() {
             progressBarValue = 100;
         } else if (score >= highlightedMiddleStandard) {
             colorClass = 'bg-warning';
-            textContent = "60";
+            textContent = "키워드를 적당히 강조했어요!";
             progressBarValue = score;
+            finalScore -= 5;
         } else {
             colorClass = 'bg-danger';
             textContent = "키워드 강조가 부족해요. 개선이 필요합니다!";
             progressBarValue = 25;
+            finalScore -= 10;
         }
 
         highlightedElement.querySelector('.card-title').innerText = score.toFixed(2) + "점";
@@ -293,7 +306,7 @@ async function updateKeywords() {
     try {
         const response = await fetch(`http://127.0.0.1:9000/data/highlight/${sessionkey}?session_key=${sessionkey}`);
         data = await response.json();
-        console.log("받은 데이터: " + data);
+        // console.log("받은 데이터: " + data);
     } catch (error) {
         console.error('데이터를 가져오는데 실패했습니다.', error);
         return;
@@ -309,11 +322,14 @@ async function updateKeywords() {
 
                 // 카드 배경색 설정
                 let cardClass = 'bg-danger'; // 낮은 em_score (기본값)
+                finalScore -= 4;
                 if (item.em_score > 0.005) {
                     cardClass = 'bg-warning'; // 중간 em_score
+                    finalScore += 2;
                 } 
                 if (item.em_score > 0.01) {
                     cardClass = 'bg-primary'; // 높은 em_score
+                    finalScore += 4;
                 }
 
                 // 기존 클래스를 제거하고 새 클래스를 추가
@@ -364,20 +380,54 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 });
 
-function updateInfo(){
-    var userDataString = localStorage.getItem('userData');
-    if (userDataString) {
-        var userData = JSON.parse(userDataString);
 
+
+async function updateInfo() {
+    try {
+        const response = await fetch(`http://127.0.0.1:9000/data/info/${sessionkey}?session_key=${sessionkey}`);
+        const userDataString = await response.text(); // 텍스트 형식으로 데이터 받기
+        const userDataParsed = JSON.parse(userDataString); // 첫 번째 파싱
+        const userData = JSON.parse(userDataParsed); // 두 번째 파싱
+
+        // HTML 요소에 서버로부터 받은 데이터를 설정합니다.
         document.getElementById("presentation-title").innerText = userData.title || "제목 없음";
-        document.getElementById("presentation-date").innerText = userData.month + "월 " + userData.day + "일" || "날짜 없음";
+        document.getElementById("presentation-date").innerText = userData.month ? `${userData.month}월 ${userData.day}일` : "날짜 없음";
         document.getElementById("presentation-keywords").innerText = userData.keyword || "키워드 없음";
-        document.getElementById("presentation-ppt").innerText = userData.ppt ? "사용함" : "사용하지 않음";
-    } else {
-        // 사용자 데이터가 없는 경우 기본 텍스트 설정
+        document.getElementById("presentation-ppt").innerText = userData.ppt === 'True' ? "사용함" : "사용하지 않음";
+    } catch (error) {
+        console.error('데이터를 가져오는데 실패했습니다.', error);
+
+        // 오류 발생 시 기본 텍스트로 설정
         document.getElementById("presentation-title").innerText = "제목 없음";
         document.getElementById("presentation-date").innerText = "날짜 없음";
         document.getElementById("presentation-keywords").innerText = "키워드 없음";
         document.getElementById("presentation-ppt").innerText = "정보 없음";
+    }
+}
+
+
+
+
+
+
+
+
+
+function updateFinalScore() {
+    var finalScoreDisplay = document.getElementById("final-score-display");
+    var finalScoreCardHeader = document.getElementById("final-score-header");
+
+    if (finalScoreDisplay && finalScoreCardHeader) {
+        finalScoreDisplay.textContent = finalScore; // 최종 점수 업데이트
+
+        finalScoreCardHeader.classList.remove("bg-primary", "bg-warning", "bg-danger");
+
+        if (finalScore >= 75) {
+            finalScoreCardHeader.classList.add("bg-primary");
+        } else if (finalScore >= 50) {
+            finalScoreCardHeader.classList.add("bg-warning");
+        } else {
+            finalScoreCardHeader.classList.add("bg-danger");
+        }
     }
 }

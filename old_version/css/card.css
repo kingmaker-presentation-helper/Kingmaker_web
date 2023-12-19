@@ -14,7 +14,7 @@ body {
     height: 100px; /* 웨이브폼을 표시할 캔버스의 높이 */
   }
   .card {
-    opacity: 0.8;
+    opacity: 0.9;
     transition: all 0.3s ease-in-out;
     /* margin-top: 2rem; */
     /* margin-bottom: 1rem; */
