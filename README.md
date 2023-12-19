@@ -25,6 +25,7 @@ Refer to the wiki page for detailed instructions.
 ### Technologies Used
 1. backend
 - [fast api](https://fastapi.tiangolo.com/ko/)
+- [uvicorn](https://www.uvicorn.org/)
 - [librosa](https://librosa.org/doc/latest/index.html)
 - [Kiwi](https://github.com/bab2min/Kiwi)
 - [gpt api](https://openai.com/blog/openai-api)
