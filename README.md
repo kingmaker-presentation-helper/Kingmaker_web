@@ -52,11 +52,3 @@ Navigated from the _Anticipated Questions_
 <img src="https://github.com/kingmaker-presentation-helper/Presentation_Helper/assets/57437648/ea13a134-28f6-4a36-8abc-b1455b642958">
 <img src="https://github.com/kingmaker-presentation-helper/Presentation_Helper/assets/57437648/a5db12af-7094-493e-aac8-e331aa1ffb21">
 <img src="https://github.com/kingmaker-presentation-helper/Presentation_Helper/assets/57437648/b7ed4982-aeee-4d30-ae3b-f4e462ab1414">
-
-
-# REST API 사용법
-
-## keyword extractor
-### 1) api.py를 실행.
-
-### 2) http GET http://127.0.0.1:5000/keyword?param="입력할 텍스트"
