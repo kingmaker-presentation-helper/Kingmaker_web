@@ -8,8 +8,8 @@ var fillerwordMiddleStandard = 5;
 var pronunciationHighStandard = 60;
 var pronunciationMiddleStandard = 50;
 
-var highlightedHighStandard = 0.01;
-var highlightedMiddleStandard = 0.005;
+var highlightedHighStandard = 0.005;
+var highlightedMiddleStandard = 0.001;
 
 var EmMiddleStandard = 0.005;
 var EmHighStandard = 0.1;
@@ -19,8 +19,8 @@ var pronunciationScoreMultiplier = 20; //발음 평가 점수에 곱하는 상�
 var highlightedScoreMultiplier = 1000;//em평가 점수에 곱하는 상수
 
 
-// const sessionkey = localStorage.getItem("session_key")
-const sessionkey = "test"
+const sessionkey = localStorage.getItem("session_key")
+// const sessionkey = "test"
 
 window.onload = function() {
     updateSpeed();
@@ -29,6 +29,8 @@ window.onload = function() {
     updateHighlighted();
     updatePose();
     updateKeywords();
+    updateTextContent();
+    updateInfo();
 };
 
 
@@ -241,7 +243,7 @@ async function updatePose() {
     try {
         const response = await fetch(`http://127.0.0.1:9000/data/pose/${sessionkey}?session_key=${sessionkey}`);
         images = await response.json();
-        console.log("받은 데이터:", images);
+        // console.log("받은 데이터:", images);
     } catch (error) {
         console.error('데이터를 가져오는데 실패했습니다.', error);
         return;
@@ -291,6 +293,7 @@ async function updateKeywords() {
     try {
         const response = await fetch(`http://127.0.0.1:9000/data/highlight/${sessionkey}?session_key=${sessionkey}`);
         data = await response.json();
+        console.log("받은 데이터: " + data);
     } catch (error) {
         console.error('데이터를 가져오는데 실패했습니다.', error);
         return;
@@ -306,10 +309,10 @@ async function updateKeywords() {
 
                 // 카드 배경색 설정
                 let cardClass = 'bg-danger'; // 낮은 em_score (기본값)
-                if (item.em_score > EmMiddleStandard) {
+                if (item.em_score > 0.005) {
                     cardClass = 'bg-warning'; // 중간 em_score
                 } 
-                if (item.em_score > EmHighStandard) {
+                if (item.em_score > 0.01) {
                     cardClass = 'bg-primary'; // 높은 em_score
                 }
 
@@ -321,5 +324,60 @@ async function updateKeywords() {
 
             }
         });
+    }
+}
+async function updateTextContent() {
+    try {
+        const response = await fetch(`http://127.0.0.1:9000/data/statement/${sessionkey}?session_key=${sessionkey}`);
+        const textData = await response.text(); // 텍스트 데이터를 받아옴
+
+        const textElement = document.getElementById("text-content");
+        if (textElement) {
+            textElement.innerText = textData; // 텍스트 내용을 업데이트
+        }
+    } catch (error) {
+        console.error('텍스트 데이터를 가져오는데 실패했습니다.', error);
+    }
+}
+
+function download(filename, text) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+}
+
+// 다운로드 버튼 이벤트 리스너 추가
+document.addEventListener('DOMContentLoaded', (event) => {
+    const downloadBtn = document.getElementById('download-btn');
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', () => {
+            const textData = document.getElementById('text-content').innerText;
+            download("download.txt", textData);
+        });
+    }
+});
+
+function updateInfo(){
+    var userDataString = localStorage.getItem('userData');
+    if (userDataString) {
+        var userData = JSON.parse(userDataString);
+
+        document.getElementById("presentation-title").innerText = userData.title || "제목 없음";
+        document.getElementById("presentation-date").innerText = userData.month + "월 " + userData.day + "일" || "날짜 없음";
+        document.getElementById("presentation-keywords").innerText = userData.keyword || "키워드 없음";
+        document.getElementById("presentation-ppt").innerText = userData.ppt ? "사용함" : "사용하지 않음";
+    } else {
+        // 사용자 데이터가 없는 경우 기본 텍스트 설정
+        document.getElementById("presentation-title").innerText = "제목 없음";
+        document.getElementById("presentation-date").innerText = "날짜 없음";
+        document.getElementById("presentation-keywords").innerText = "키워드 없음";
+        document.getElementById("presentation-ppt").innerText = "정보 없음";
     }
 }

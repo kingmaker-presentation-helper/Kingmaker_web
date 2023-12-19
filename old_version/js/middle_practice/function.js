@@ -17,7 +17,7 @@
 
         $("#title").text(userData.title);
         $('#date').text(userData.month+'월 '+userData.day+'일');
-        localStorage.removeItem('userData');
+        // localStorage.removeItem('userData');
         console.log('날짜: '+userData.month+'월 '+userData.day+'일\n제목: '
             +userData.title+' 키워드: '+userData.keyword+'\nppt 유무: '+isppt);
     }

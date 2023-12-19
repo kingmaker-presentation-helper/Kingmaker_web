@@ -286,6 +286,27 @@
     <!-- Template Javascript -->
     <script src="../js/main.js"></script>
     <script src="../js/expected_question/function.js"></script>
+    <script>
+        async function updateQuestions() {
+            try {
+                const response = await fetch(`http://127.0.0.1:9000/data/question/test?session_key=test`);
+                const questions = await response.json();
+    
+                for (let i = 1; i <= 15; i++) {
+                    const questionElement = document.getElementById(`q${i}`);
+                    if (questionElement && questions[i]) {
+                        questionElement.innerText = questions[i];
+                    }
+                }
+            } catch (error) {
+                console.error('질문 데이터를 가져오는데 실패했습니다.', error);
+            }
+        }
+    
+        window.onload = function() {
+            updateQuestions();
+        };
+    </script>
 </body>
 
 </html>
