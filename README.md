@@ -18,7 +18,7 @@ This presentation practice website was designed to assist individuals seeking fe
 Existing presentation rehearsal tools lacked comprehensive feedback features, offering only video recording or basic transcription. To enhance presentation practice efficiency, the goal is to create a tool that not only records and transcribes but also analyzes and provides feedback on the presentation.
 
 ### How to Use this website
-[Refer to the wiki page for detailed instructions.](https://github.com/kingmaker-presentation-helper/Kingmaker_web/wiki)
+Refer to the [wiki page](https://github.com/kingmaker-presentation-helper/Kingmaker_web/wiki) for detailed instructions.
 
 ## Technologies Used and Team Introduction
 
