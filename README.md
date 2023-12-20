@@ -46,7 +46,6 @@ github wiki는 private repository에서 생성 불가
 repository를 public으로 수정한 다음에 복붙하기
 
 # Kingmaker Web
-wiki
 
 ## Table of Contents
 1. Page Guides
