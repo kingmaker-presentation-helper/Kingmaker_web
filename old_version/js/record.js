@@ -1,11 +1,10 @@
 (function ($) {
     "use strict";   
     
-
     $(document).ready(function() {
 
         // 세션 키를 스토리지에서 가져오기
-        const sessionkey = sessionStorage.getItem('sessionkey');
+        const sessionkey = localStorage.getItem('sessionkey');
 
         // WaveSurfer 초기화
         let wavesurfer = WaveSurfer.create({
@@ -166,58 +165,44 @@
 
         
 
-        async function sendVideoToServer(){
-            //
+        async function sendVideoToServer() {
             const recordingEndTime = Date.now();
             const durationInSeconds = (recordingEndTime - recordingStartTime) / 1000;
             const blob = new Blob(combinedChunks, { 'type' : 'video/mp4' });
-
-            if (!validateFile(new File([blob], 'video_recording.mp4', { type: 'video/mp4' }))) {
-                return;
-            }
+        
+            // Blob 데이터 로컬에서 재생하여 확인
             const url = URL.createObjectURL(blob);
             videoPlayer.src = url;
             showVideoElement(videoPlayer);
             hideVideoElement(liveVideoFeed);
             wavesurfer.load(url);
-            combinedChunks = [];
-
-            // Create a new FormData object
+        
+            if (!validateFile(new File([blob], 'video_recording.mp4', { type: 'video/mp4' }))) {
+                console.error('Invalid file format or size.');
+                return;
+            }
+        
             const formData = new FormData();
-
-            // Append the video blob to the FormData object
-            const videoFilename = `video_recording.mp4`;
-            const audioFile = new File([blob], videoFilename, {type: "video/mp4"});
-            formData.append('file', audioFile, videoFilename);
-
-            // Append the audio blob to the FormData object
-            // const audioFilename = `audio_recording_${new Date().toISOString().replace(/[:.]/g, "-")}.wav`;
-            // formData.append('audio', audioBlob, audioFilename);
-
-            // Append user_name to the FormData object
-            const user_name = sessionkey;  // Replace this with the actual user name input
-            formData.append('user_name', user_name);
-
-            // Append additional data (if needed)
+            const videoFilename = 'video_recording.mp4';
+            formData.append('file', new File([blob], videoFilename, {type: 'video/mp4'}), videoFilename);
+            formData.append('user_name', sessionkey);
             formData.append('duration', durationInSeconds.toString());
-
-            // Send the video and audio data to the server using AJAX
+        
+            console.log('Sending video to server...');
+        
             $.ajax({
-                type: "POST",
-                url: "http://localhost:9000/function/audio/",
+                type: 'POST',
+                url: 'http://localhost:9000/function/audio/',
                 data: formData,
                 processData: false,
                 contentType: false,
                 success: function(response) {
-                    console.log("Video and audio sent successfully:", response);
+                    console.log('Video and audio sent successfully:', response);
                 },
-                error: function(error) {
-                    console.error("Error sending video and audio:", error);
+                error: function(xhr, status, error) {
+                    console.error('Error sending video and audio:', xhr.responseText, status, error);
                 }
             });
-
-            // Reset for the next recording
-            combinedChunks = [];
         }
 
         $('#recordButton').click(function() {
@@ -277,7 +262,7 @@
 
                         mediaRecorder.onstop = () => {
                             clearInterval(timerInterval);
-                            // sendVideoToServer();
+                            sendVideoToServer();
                             // sendAudioToServer();
                             
                         };
