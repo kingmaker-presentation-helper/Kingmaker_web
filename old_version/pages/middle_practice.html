@@ -75,8 +75,7 @@
             try {
                 // Use Promise.all to concurrently fetch session key and user data
                 const [sessionkey, userData] = await Promise.all([getSessionKey(), fetchUserData()]);
-                
-                sessionStorage.setItem('sessionkey', sessionkey);
+                localStorage.setItem('sessionkey', sessionkey);
                 console.log(sessionkey);
                 console.log(userData);
 
@@ -117,9 +116,6 @@
                 $.getScript("../js/record.js", function () {
                     console.log("record.js loaded");
                 });
-                // $.getScript("../js/middle_practice/function.js", function () {
-                //     console.log("middle_practice/function.js loaded");
-                // });
             } catch (error) {
                 console.error("An error occurred:", error);
             }
@@ -130,100 +126,10 @@
         main();
         console.log("After main function");
     </script>
-    <!-- <script defer src="../js/record.js"></script> -->
-    <!-- <script defer src="../js/middle_practice/function.js"></script> -->
-    <!-- <script src="../js/record.js"></script> -->
-
-    <!-- Template Javascript -->
-    <!-- <script src="../js/main.js"></script> -->
-    <!-- <script src="../js/record.js"></script> -->
-    <!-- Get SecretKey -->
-    <!--"http://localhost:9000/function/sessionkey"를 get 방식으로 호출해 secret key 저장 -->
-    <!-- <script>
-        
-        async function getSessionKey() {
-            try {
-                const response = await $.ajax({
-                    url: "http://localhost:9000/function/sessionkey",
-                    type: "GET",
-                    dataType: "json",
-                });
-
-                return response.sessionkey;
-            } catch (error) {
-                console.log("Error getting session key:", error);
-                throw error; // 예외 처리를 원하는 방식으로 진행하거나 상위로 던집니다.
-            }
-        }
-        async function main() {
-            try {
-                var sessionkey = await getSessionKey();
-                console.log(sessionkey)
-                var userDataString = localStorage.getItem('userData');
-                var userData = JSON.parse(userDataString);
-
-                userData.sessionKey = sessionkey;
-                console.log(userData);
-
-                // 이후에 userData를 사용하여 다른 작업 수행
-                if(userDataString){
-                    // ppt 업로드 안했으면 ppt 부분 삭제합니다.
-                    var isppt = userData.ppt;
-                    if(!isppt){$('#ppt').remove();}
-
-                    $("#title").text(userData.title);
-                    $('#date').text(userData.month+'월 '+userData.day+'일');
-                    // localStorage.removeItem('userData');
-                    console.log('날짜: '+userData.month+'월 '+userData.day+'일\n제목: '
-                        +userData.title+' 키워드: '+userData.keyword+'\nppt 유무: '+isppt);
-                    console.log(userDataString)
-                    // userDataString의 타입 log
-                    console.log(typeof(userDataString));
-                    // localhost:9000/function/info로 post로 정보 전송
-                    $.ajax({
-                        url: 'http://localhost:9000/function/info/',  
-                        type: 'POST',
-                        contentType: 'application/json',
-                        data: JSON.stringify(userData), // userData를 JSON 문자열로 변환
-                        success: function(data){
-                            console.log(data);
-                        },
-                        error: function(err){
-                            console.log(err);
-                        }
-                    });
-                }
-                else{
-                    alert("발표 데이터가 없습니다!");
-                    window.history.back();
-                }
-
-                // 앞에 코드들이 다 끝나고 "../js/record.js" 실행
-                // $.getScript("../js/middle_practice/record.js", function(){
-                //     console.log("record.js loaded");
-                // });
-            } catch (error) {
-                console.error("An error occurred:", error);
-            }
-        }
-
-        // Call the main function
-        main();
-    </script>
-    <script src="../js/record.js"></script> -->
-
 </head>
 
 <body>
     <div class="container-xxl position-relative bg-white d-flex p-0">
-        <!-- Spinner Start -->
-        <!-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div> -->
-        <!-- Spinner End -->
-
 
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
@@ -315,21 +221,6 @@
                 </div>
             </div>
             <!-- 발표 관련 정보 end -->
-
-
-
-
-
-
-
-<!--html은 주석이 중첩처리 되지 않는다고 합니다. 그래서 두 개 모두 일단 구현되어있는 상태입니다.
-비디오버전과, ppt버전을 테스트하려면 각 해당하지 않은 영역을 삭제한 후 확인하시면 됩니다.-->
-
-
-
-
-
-
 
 
 <!-- 음성 녹음 및 비디오 플레이어 섹션 -->
@@ -449,7 +340,6 @@
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
 
-    <!-- <script src="../js/middle_practice/function.js"></script> -->
 </body>
 
 </html>

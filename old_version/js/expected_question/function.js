@@ -1,17 +1,17 @@
 (function($){
     "use strict";
 
-    var session = localStorage.getItem('session_key');
-    if(session === null) {
+    var sessionkey = localStorage.getItem('sessionkey');
+    if(sessionkey === null) {
         alert("세션이 만료되었습니다.");
         window.history.back();
     }
-    localStorage.removeItem('session_key');
-    console.log('session: '+session);
+    // localStorage.removeItem('sessionkey');
+    console.log('sessionkey: '+sessionkey);
 
     // 분석 결과 보러가기 버튼
     $('#result').on('click', function(){
-        localStorage.setItem('session_key', session);
+        localStorage.setItem('sessionkey', sessionkey);
         window.location.href="after_practice.html";
     });
 

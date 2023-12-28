@@ -26,7 +26,7 @@ var pronunciationScoreMultiplier = 20; //발음 평가 점수에 곱하는 상�
 var highlightedScoreMultiplier = 1500;//em평가 점수에 곱하는 상수
 
 
-const sessionkey = localStorage.getItem("session_key")
+const sessionkey = localStorage.getItem("sessionkey")
 // const sessionkey = "test"
 
 window.onload = async function() {
