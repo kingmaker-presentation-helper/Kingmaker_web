@@ -129,6 +129,10 @@
 </head>
 
 <body>
+    <div class="container-fluid">
+    <div class="row">
+
+    <div class="col-md-9">
     <div class="container-xxl position-relative bg-white d-flex p-0">
 
         <!-- Sidebar Start -->
@@ -231,21 +235,72 @@
         <!-- 비디오 플레이어 영역 -->
         <div class="row">
             <div class="col-12 mb-4">
-                <div class="ratio ratio-16x9" style="max-height: 100%;">
+                <div class="ratio ratio-16x9" >
                     <div id="videoPlaceholder" class="bg-light rounded shadow-lg d-flex justify-content-center align-items-center" style="width: 100%; height: 100%;">
                         <span class="text-muted">비디오 미리보기</span>
                     </div>
-                    <video id="liveVideoFeed" class="rounded shadow-lg" autoplay muted style="width: 100%; height: 100%; display: none;"></video>
-                    <video id="videoPlayback" class="rounded shadow-lg" style="width: 100%; height: 100%; display: none;"></video>
+                    <video id="liveVideoFeed" class="rounded shadow-lg" autoplay muted style="display: none;"></video>
+                    <video id="videoPlayback" class="rounded shadow-lg" style="display: none;"></video>
                 </div>
             </div>
         </div>
-        <!-- 캐러셀 섹션 -->
+
+        <!-- 웨이브폼 영역 -->
+        <div class="row">
+            <div class="col-12">
+                <div id="waveform" class="rounded shadow-lg" style="background-color: #f0f0f0; width: 100%;"></div>
+            </div>
+        </div>
+
+        <!-- 녹음 및 재생 컨트롤 버튼 -->
+        <div class="row mt-3">
+            <div class="col-12 text-center">
+                <span id="timer" class="badge badge-light mb-2" style="font-size: 1.0rem; background-color: #28a745; color: white; padding: 10px;">00:00:00</span>
+                <div class="mt-2">
+                    <button id="recordButton" class="btn btn-lg btn-danger">녹화 시작</button>
+                    <button id="playButton" class="btn btn-lg btn-success ml-2">재생</button>
+                    <button id="endButton" class="btn btn-lg btn-danger ml-2">연습 종료</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+            <!-- Footer Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-light rounded-top p-4">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 text-center text-sm-start">
+                            &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
+                        </div>
+                        <div class="col-12 col-sm-6 text-center text-sm-end">
+                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                            Designed By <a href="https://htmlcodex.com">HTML Codex</a>
+                        </br>
+                        Distributed By <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer End -->
+        </div>
+        <!-- Content End -->
+        
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+    </div>
+
+    <div class="col-md-3 d-flex align-items-center justify-content-center">
+        <!-- 캐러셀 -->
         <div id=ppt class="container mt-5">
             <div class="row">
                 <div class="col-12 mb-4">
                     <!-- 캐러셀이 비디오 플레이어 크기와 동일하도록 설정 -->
-                    <div class="ratio ratio-16x9" style="max-height: 100%;">
+                    <div class="ratio ratio-16x9" >
                         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
                             <!-- 캐러셀 인디케이터 -->
                             <div class="carousel-indicators">
@@ -294,52 +349,9 @@
                 </div>
             </div>
         </div>
-        <!-- 웨이브폼 영역 -->
-        <div class="row">
-            <div class="col-12">
-                <div id="waveform" class="rounded shadow-lg" style="background-color: #f0f0f0; width: 100%;"></div>
-            </div>
-        </div>
-
-        <!-- 녹음 및 재생 컨트롤 버튼 -->
-        <div class="row mt-3">
-            <div class="col-12 text-center">
-                <span id="timer" class="badge badge-light mb-2" style="font-size: 1.0rem; background-color: #28a745; color: white; padding: 10px;">00:00:00</span>
-                <div class="mt-2">
-                    <button id="recordButton" class="btn btn-lg btn-danger">녹화 시작</button>
-                    <button id="playButton" class="btn btn-lg btn-success ml-2">재생</button>
-                    <button id="endButton" class="btn btn-lg btn-danger ml-2">연습 종료</button>
-                </div>
-            </div>
-        </div>
     </div>
-</div>
-
-            <!-- Footer Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="bg-light rounded-top p-4">
-                    <div class="row">
-                        <div class="col-12 col-sm-6 text-center text-sm-start">
-                            &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
-                        </div>
-                        <div class="col-12 col-sm-6 text-center text-sm-end">
-                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                            Designed By <a href="https://htmlcodex.com">HTML Codex</a>
-                        </br>
-                        Distributed By <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Footer End -->
-        </div>
-        <!-- Content End -->
-
-
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
-
+    </div>
 </body>
 
 </html>
