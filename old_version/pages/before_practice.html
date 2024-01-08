@@ -134,14 +134,17 @@
                     <div class="col-sm-12 col-xl-6">
                         <div class="bg-light rounded h-100 p-4">
                             <h6 class="mb-4">발표 자료 업로드</h6>
-                            <div>
+
+                            <form id="pptUploadForm" action="http://localhost:9000/function/upload_ppt" method="post" enctype="multipart/form-data">
                                 <label for="formFileLg" class="form-label">프레젠테이션 자료 업로드</label>
-                                <input class="form-control" id="pptFile" type="file" accept=".ppt, .pptx">
-                            </div>
+                                <input class="form-control" id="pptFile" type="file" name="file" accept=".ppt, .pptx" required>
+                            </form>
+
                             <div style="margin-top: 32px;">
                                 <label for="formFileLg" class="form-label">발표 대본 업로드</label>
                                 <input class="form-control" id="scriptFile" type="file" accept=".txt">
                             </div>
+                            
                         </div>
                     </div>
                     <!-- 업로드 End -->
@@ -166,7 +169,7 @@
                     <!-- 발표 시작 버튼 Start-->
                     <div class="col-sm-12 col-xl-6">
                         <div style="display: flex; justify-content: center;">
-                            <button id="next" type="button" class="btn btn-lg btn-primary m-2" style="width: 216px;">발표연습 시작하기</button>
+                            <button id="next" type="submit" form="pptUploadForm" class="btn btn-lg btn-primary m-2" style="width: 216px;">발표연습 시작하기</button>
                         </div>
                     </div>
                     <!-- 발표 시작 버튼 End -->

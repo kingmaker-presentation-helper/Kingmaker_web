@@ -1,8 +1,40 @@
 (function ($) {
     "use strict";
 
-    // Calender
+    var sessionkey;
+
+    async function getSessionKey() {
+        try{
+            const response = await $.ajax({
+                url:"http://localhost:9000/function/sessionkey",
+                type:"GET",
+                dataType:"json",
+            });
+            console.log('sessionkey assign success');
+            return response.sessionkey;
+        } catch(error){
+            console.log("Error getting session key:", error);
+            throw error;
+        }
+    }
+
+    async function execute_sessionkey() {
+        try {
+            const sessionkey = await getSessionKey();
+
+            localStorage.setItem('sessionkey', sessionkey);
+            console.log('sessionkey stored in localstorage: ', sessionkey);
+
+            return sessionkey;
+        } catch (error){
+            console.error('Error in execute_sessionkey:', error);
+            throw error;
+        }
+    }
+    
+
     $(document).ready(function() {
+        // 캘린더
         $('#calender').datetimepicker({
             inline: true,
             format: 'L',
@@ -19,7 +51,12 @@
         $('#calender').on('change.datetimepicker', function(e) {
             setDate(e.date);
         })
+
+        execute_sessionkey();
+        sessionkey = localStorage.getItem('sessionkey') 
     });
+
+
     // 선택한 날짜 저장하고 출력
     function setDate(date){
         $('#date').text('발표 예정일: '+date.format('M월 D일'));
@@ -74,6 +111,29 @@
             localStorage.setItem('userData', jsonString);
             window.location.href='middle_practice.html';
         }
+    });
+
+    $('#pptUploadForm').submit(function(event) {
+        event.preventDefault();
+    
+        const formData = new FormData(this);
+
+        formData.append('user_name', sessionkey);
+        console.log("sessionkey: ", sessionkey);
+    
+        $.ajax({
+            url: 'http://localhost:9000/function/upload_ppt',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(data) {
+                console.log('Image sent successfully:', data);
+            },
+            error: function(error) {
+                console.error('Error uploading PPT: ', error);
+            }
+        });
     });
 
 
