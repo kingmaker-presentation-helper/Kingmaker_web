@@ -23,7 +23,7 @@
             const sessionkey = await getSessionKey();
 
             localStorage.setItem('sessionkey', sessionkey);
-            console.log('sessionkey stored in localstorage: ', sessionkey);
+            console.log('sessionkey execute_sessionkey: ', sessionkey);
 
             return sessionkey;
         } catch (error){
@@ -33,7 +33,7 @@
     }
     
 
-    $(document).ready(function() {
+    $(document).ready(async function() {
         // 캘린더
         $('#calender').datetimepicker({
             inline: true,
@@ -52,8 +52,9 @@
             setDate(e.date);
         })
 
-        execute_sessionkey();
-        sessionkey = localStorage.getItem('sessionkey') 
+        // execute_sessionkey();
+        sessionkey = await execute_sessionkey();
+        console.log('sessionkey localstorage.getitem:', sessionkey);
     });
 
 
@@ -85,9 +86,9 @@
         }
     });
 
-    // 발표 시작하기 버튼: 발표 제목, 키워드, 발표 날짜 localStorage로 넘기기 및 발표 연습으로 넘어가기
-    $('#next').on('click', function(){
-
+    // // 발표 시작하기 버튼: 발표 제목, 키워드, 발표 날짜 localStorage로 넘기기 및 발표 연습으로 넘어가기
+    // $('#next').on('click', function(){
+    function afterUpload() {
         // 다음 페이지로 넘겨줄 데이터 선언
         var userData;
         var selectedDate = $('#calender').datetimepicker('date');
@@ -96,30 +97,33 @@
         var title = $('#floatingInput').val();
         var keyword = $('#floatingTextarea').val();
 
+        userData = {
+            month: month,
+            day: day,
+            title: title,
+            keyword: keyword,
+            ppt: isppt,
+        };
+        var jsonString = JSON.stringify(userData);
+        localStorage.setItem('userData', jsonString);
+        window.location.href='middle_practice.html';
+    }
+
+    $('#pptUploadForm').submit(function(event) {
+        
+        var title = $('#floatingInput').val();
+        var keyword = $('#floatingTextarea').val();
+
         if(title.trim() === "" || keyword.trim() === ""){
             alert("발표 제목, 주요 키워드를 입력해주세요.");
         }
-        else{
-            userData = {
-                month: month,
-                day: day,
-                title: title,
-                keyword: keyword,
-                ppt: isppt,
-            };
-            var jsonString = JSON.stringify(userData);
-            localStorage.setItem('userData', jsonString);
-            window.location.href='middle_practice.html';
-        }
-    });
-
-    $('#pptUploadForm').submit(function(event) {
+        
         event.preventDefault();
     
         const formData = new FormData(this);
 
         formData.append('user_name', sessionkey);
-        console.log("sessionkey: ", sessionkey);
+        console.log("sessionkey formdata append: ", sessionkey);
     
         $.ajax({
             url: 'http://localhost:9000/function/upload_ppt',
@@ -129,6 +133,8 @@
             contentType: false,
             success: function(data) {
                 console.log('Image sent successfully:', data);
+
+                afterUpload();
             },
             error: function(error) {
                 console.error('Error uploading PPT: ', error);

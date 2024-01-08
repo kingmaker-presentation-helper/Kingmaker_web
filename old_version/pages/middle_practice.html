@@ -47,13 +47,8 @@
     <script>
         async function getSessionKey() {
             try {
-                const response = await $.ajax({
-                    url: "http://localhost:9000/function/sessionkey",
-                    type: "GET",
-                    dataType: "json",
-                });
-
-                return response.sessionkey;
+                sessionkey = localStorage.getItem('sessionkey');
+                return sessionkey;
             } catch (error) {
                 console.log("Error getting session key:", error);
                 throw error;
@@ -75,8 +70,7 @@
             try {
                 // Use Promise.all to concurrently fetch session key and user data
                 const [sessionkey, userData] = await Promise.all([getSessionKey(), fetchUserData()]);
-                localStorage.setItem('sessionkey', sessionkey);
-                console.log(sessionkey);
+                console.log('sessionkey:', sessionkey);
                 console.log(userData);
 
                 if (userData) {
