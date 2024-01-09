@@ -391,8 +391,6 @@ async function updateTextContent() {
         const data = await response.json(); // JS
         const obj = JSON.parse(data);
 
-        console.log(data);
-        console.log(data['결론']);
         // 서론, 본론, 결론의 텍스트를 각 섹션에 할당
         document.getElementById("intro").innerText = obj.서론 || '서론 내용이 없습니다.';
         document.getElementById("main_text").innerText = obj.본론 || '본론 내용이 없습니다.';
@@ -401,33 +399,6 @@ async function updateTextContent() {
         console.error('텍스트 데이터를 가져오는데 실패했습니다.', error);
     }
 }
-
-
-function download(filename, text) {
-    var element = document.createElement('a');
-    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-    element.setAttribute('download', filename);
-
-    element.style.display = 'none';
-    document.body.appendChild(element);
-
-    element.click();
-
-    document.body.removeChild(element);
-}
-
-// 다운로드 버튼 이벤트 리스너
-document.getElementById("download-btn").addEventListener("click", function() {
-    // 서론, 본론, 결론 텍스트를 결합
-    const textToDownload = document.getElementById("intro").innerText + "\n\n" + 
-                           document.getElementById("main_text").innerText + "\n\n" + 
-                           document.getElementById("conclusion").innerText;
-
-    // 다운로드 함수 호출
-    download("presentation.txt", textToDownload);
-});
-
-
 
 async function updateInfo() {
     try {
@@ -475,4 +446,47 @@ function updateFinalScore() {
     }
 }
 
+function download(filename, text) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+}
+
+
   
+async function updateQA(question) {
+    
+    const response = await fetch(`http://127.0.0.1:9000/function/QA/${sessionkey}?session_key=${sessionkey}&question=${encodeURIComponent(question)}`);
+    if (!response.ok) {
+        throw new Error('Network response was not ok: ' + response.statusText);
+    }
+    const data = await response.json(); // JS
+
+
+    const QAElement = document.getElementById("server-response");
+    QAElement.querySelector('.card-text').innerText = "[이 답변의 신뢰도는 " + (data['confidence'] * 100).toFixed(2) + "% 입니다!]\n\n" + (data['answer'] || '결론 내용이 없습니다.');
+ 
+
+}
+// 다운로드 버튼 이벤트 리스너
+document.getElementById("download-btn").addEventListener("click", function() {
+    // 서론, 본론, 결론 텍스트를 결합
+    const textToDownload = document.getElementById("intro").innerText + "\n\n" + 
+                           document.getElementById("main_text").innerText + "\n\n" + 
+                           document.getElementById("conclusion").innerText;
+
+    // 다운로드 함수 호출
+    download("presentation.txt", textToDownload);
+});
+// QA 버튼 이벤트 리스너
+document.getElementById("send-request-btn").addEventListener("click", function() {
+    var question = document.getElementById("user-input").value;
+    updateQA(question);
+});

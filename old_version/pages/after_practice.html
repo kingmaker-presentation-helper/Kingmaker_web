@@ -568,6 +568,43 @@
 </div>
 
 
+<div class="container mt-4">
+    <!-- 기존 발표 문장 다시보기 카드 -->
+    <div class="card">
+        <!-- 카드 헤더 -->
+        <div class="card-header bg-primary text-white" style="text-align: left;">
+            <i class="fas fa-file-alt"></i> 발표 문장 다시보기
+        </div>
+
+        <div class="card-body">
+            <!-- 기존 카드 섹션들 (서론, 본론, 결론) -->
+
+            <!-- 사용자 입력 카드 -->
+            <div class="card mb-3">
+                <div class="card-header" style="text-align: left;">
+                        질문을 입력해주세요!
+                </div>
+                <div class="card-body">
+                    <textarea id="user-input" class="form-control" rows="3" placeholder="여기에 입력하세요..."></textarea>
+                </div>
+            </div>
+
+            <!-- 서버 응답 표시 카드 -->
+            <div class="card mb-3">
+                <div class="card-header" style="text-align: left;">
+                    AI 분석 
+                </div>
+                <div class="card-body" id="server-response">
+                    <p class="card-text">AI가 분석한 답변이 여기 표시됩니다.</p>
+                </div>
+            </div>
+
+            <!-- 요청 보내기 버튼 -->
+            <button class="btn btn-primary" id="send-request-btn" style="width: 100%;">요청 보내기</button>
+
+        </div>
+    </div>
+</div>
 
 
 
