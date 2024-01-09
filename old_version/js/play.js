@@ -1,6 +1,23 @@
 (function ($) {
     "use strict";
 
+    // 툴팁용 HTML 요소 생성
+    $('body').append('<div id="tooltip" style="position: absolute; display: none; background: #fff; border: 1px solid #000; padding: 5px;"></div>');
+
+    $('#waveform').mousemove(function(e) {
+        // 마우스 위치에 따른 주파수 정보 계산 (여기서는 단순 예시)
+        let frequencyInfo = '주파수: ' + Math.random().toFixed(2) + ' Hz'; // 실제로는 해당 위치의 주파수 정보를 계산해야 함
+
+        // 툴팁 위치 업데이트 및 표시
+        $('#tooltip').css({ top: e.pageY + 5, left: e.pageX + 5 }).show().text(frequencyInfo);
+    }).mouseout(function() {
+        // 마우스가 벗어나면 툴팁 숨기기
+        $('#tooltip').hide();
+    });
+
+
+
+
 
     async function updateVideo() {
         let data;
@@ -24,9 +41,16 @@
         let wavesurfer = WaveSurfer.create({
             container: '#waveform',
             waveColor: 'violet',
+            
             progressColor: 'purple',
-            barWidth: 1,
-            barHeight: 2,
+            barWidth: 3,
+            barHeight: 5,
+            //아래부터 주파수 정밀도 관련 
+            minPxPerSec: 50, //시각화 해상도
+            backend: 'MediaElementWebAudio',
+            fftSize: 1024 // 예시 값, 필요에 따라 조정 가능
+            
+
         });
 
         let videoPlayer = document.getElementById('videoPlayback');
@@ -63,6 +87,7 @@
 
         // Waveform 클릭 이벤트 처리
         wavesurfer.on('ready', function() {
+            console.log("WaveSurfer is ready."); 
             const waveformContainer = document.querySelector('#waveform');
 
             $('#loadingIndicator').hide();
@@ -76,6 +101,7 @@
                     videoPlayer.currentTime = time;
                 }
             });
+
         });
 
         // 비디오 재생 버튼 클릭 이벤트 처리
