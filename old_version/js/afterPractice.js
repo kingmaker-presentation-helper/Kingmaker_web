@@ -383,22 +383,24 @@ async function updateKeywords() {
 }
 async function updateTextContent() {
     try {
-        const response = await fetch(`http://127.0.0.1:9000/data/statement/${sessionkey}?session_key=${sessionkey}`);
-        let textData = await response.text(); // 텍스트 데이터를 받아옴
-
-        // 문자열 시작과 끝의 따옴표 및 문자열 내의 '\n' 문자 제거
-        textData = textData.replace(/^"|"$/g, '').replace(/\\n/g, '');
-
-        const textElement = document.getElementById("text-content");
-        if (textElement) {
-            textElement.innerText = textData; // 텍스트 내용을 업데이트
+        // 올바른 API 호출
+        const response = await fetch(`http://127.0.0.1:9000/data/paragraph/${sessionkey}?session_key=${sessionkey}`);
+        if (!response.ok) {
+            throw new Error('Network response was not ok: ' + response.statusText);
         }
+        const data = await response.json(); // JS
+        const obj = JSON.parse(data);
+
+        console.log(data);
+        console.log(data['결론']);
+        // 서론, 본론, 결론의 텍스트를 각 섹션에 할당
+        document.getElementById("intro").innerText = obj.서론 || '서론 내용이 없습니다.';
+        document.getElementById("main_text").innerText = obj.본론 || '본론 내용이 없습니다.';
+        document.getElementById("conclusion").innerText = obj.결론 || '결론 내용이 없습니다.';
     } catch (error) {
         console.error('텍스트 데이터를 가져오는데 실패했습니다.', error);
     }
 }
-
-
 
 
 function download(filename, text) {
@@ -414,15 +416,15 @@ function download(filename, text) {
     document.body.removeChild(element);
 }
 
-// 다운로드 버튼 이벤트 리스너 추가
-document.addEventListener('DOMContentLoaded', (event) => {
-    const downloadBtn = document.getElementById('download-btn');
-    if (downloadBtn) {
-        downloadBtn.addEventListener('click', () => {
-            const textData = document.getElementById('text-content').innerText;
-            download("download.txt", textData);
-        });
-    }
+// 다운로드 버튼 이벤트 리스너
+document.getElementById("download-btn").addEventListener("click", function() {
+    // 서론, 본론, 결론 텍스트를 결합
+    const textToDownload = document.getElementById("intro").innerText + "\n\n" + 
+                           document.getElementById("main_text").innerText + "\n\n" + 
+                           document.getElementById("conclusion").innerText;
+
+    // 다운로드 함수 호출
+    download("presentation.txt", textToDownload);
 });
 
 
