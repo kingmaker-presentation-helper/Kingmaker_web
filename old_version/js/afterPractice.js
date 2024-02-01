@@ -81,7 +81,7 @@ window.onload = async function() {
 async function updateSpeed() {
     let data;
     try {
-        const response = await fetch(`http://0.0.0.0:9000/function/speech_speed/${sessionkey}?session_key=${sessionkey}`);
+        const response = await fetch(`http://43.200.201.188:9000/function/speech_speed/${sessionkey}?session_key=${sessionkey}`);
         data = await response.json();
     } catch (error) {
         console.error('데이터를 가져오는데 실패했습니다.', error);
@@ -131,7 +131,7 @@ async function updateSpeed() {
 async function updateFillerword() {
     let data;
     try {
-        const response = await fetch(`http://0.0.0.0:9000/function/fillerword/${sessionkey}?session_key=${sessionkey}`);
+        const response = await fetch(`http://43.200.201.188:9000/function/fillerword/${sessionkey}?session_key=${sessionkey}`);
         data = await response.json();
     } catch (error) {
         console.error('데이터를 가져오는데 실패했습니다.', error);
@@ -188,7 +188,7 @@ async function updateFillerword() {
 async function updatePronunciation() {
     let data;
     try {
-        const response = await fetch(`http://0.0.0.0:9000/data/pronunciation/${sessionkey}?session_key=${sessionkey}`);
+        const response = await fetch(`http://43.200.201.188:9000/data/pronunciation/${sessionkey}?session_key=${sessionkey}`);
         data = await response.json();
     } catch (error) {
         console.error('데이터를 가져오는데 실패했습니다.', error);
@@ -236,7 +236,7 @@ async function updatePronunciation() {
 async function updateHighlighted() {
     let data;
     try {
-        const response = await fetch(`http://0.0.0.0:9000/data/highlight/${sessionkey}?session_key=${sessionkey}`);
+        const response = await fetch(`http://43.200.201.188:9000/data/highlight/${sessionkey}?session_key=${sessionkey}`);
         data = await response.json();
     } catch (error) {
         console.error('데이터를 가져오는데 실패했습니다.', error);
@@ -293,7 +293,7 @@ async function updateHighlighted() {
 async function updatePose() {
     let images;
     try {
-        const response = await fetch(`http://0.0.0.0:9000/data/pose/${sessionkey}?session_key=${sessionkey}`);
+        const response = await fetch(`http://43.200.201.188:9000/data/pose/${sessionkey}?session_key=${sessionkey}`);
         images = await response.json();
         // console.log("받은 데이터:", images);
     } catch (error) {
@@ -306,7 +306,7 @@ async function updatePose() {
 
     if (images && images.length > 0) {
         images.forEach((image, index) => {
-            const imageUrl = `http://0.0.0.0:9000/data/download/pose/${sessionkey}/${image}`;
+            const imageUrl = `http://43.200.201.188:9000/data/download/pose/${sessionkey}/${image}`;
 
             const carouselItem = document.createElement('div');
             carouselItem.className = 'carousel-item';
@@ -343,7 +343,7 @@ async function updatePose() {
 async function updateKeywords() {
     let data;
     try {
-        const response = await fetch(`http://0.0.0.0:9000/data/highlight/${sessionkey}?session_key=${sessionkey}`);
+        const response = await fetch(`http://43.200.201.188:9000/data/highlight/${sessionkey}?session_key=${sessionkey}`);
         data = await response.json();
         // console.log("받은 데이터: " + data);
     } catch (error) {
@@ -384,7 +384,7 @@ async function updateKeywords() {
 async function updateTextContent() {
     try {
         // 올바른 API 호출
-        const response = await fetch(`http://0.0.0.0:9000/data/paragraph/${sessionkey}?session_key=${sessionkey}`);
+        const response = await fetch(`http://43.200.201.188:9000/data/paragraph/${sessionkey}?session_key=${sessionkey}`);
         if (!response.ok) {
             throw new Error('Network response was not ok: ' + response.statusText);
         }
@@ -402,7 +402,7 @@ async function updateTextContent() {
 
 async function updateInfo() {
     try {
-        const response = await fetch(`http://0.0.0.0:9000/data/info/${sessionkey}?session_key=${sessionkey}`);
+        const response = await fetch(`http://43.200.201.188:9000/data/info/${sessionkey}?session_key=${sessionkey}`);
         const userDataString = await response.text(); // 텍스트 형식으로 데이터 받기
         const userDataParsed = JSON.parse(userDataString); // 첫 번째 파싱
         const userData = JSON.parse(userDataParsed); // 두 번째 파싱
@@ -463,7 +463,7 @@ function download(filename, text) {
   
 async function updateQA(question) {
     
-    const response = await fetch(`http://0.0.0.0:9000/function/QA/${sessionkey}?session_key=${sessionkey}&question=${encodeURIComponent(question)}`);
+    const response = await fetch(`http://43.200.201.188:9000/function/QA/${sessionkey}?session_key=${sessionkey}&question=${encodeURIComponent(question)}`);
     if (!response.ok) {
         throw new Error('Network response was not ok: ' + response.statusText);
     }

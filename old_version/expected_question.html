@@ -292,7 +292,7 @@
                 const sessionkey = localStorage.getItem("sessionkey");
                 console.log("sessionkey: ", sessionkey);
             
-                const response = await fetch(`http://0.0.0.0:9000/data/question/${sessionkey}?session_key=${sessionkey}`);
+                const response = await fetch(`http://43.200.201.188:9000/data/question/${sessionkey}?session_key=${sessionkey}`);
                 const questions = await response.json();
     
                 for (let i = 1; i <= 15; i++) {

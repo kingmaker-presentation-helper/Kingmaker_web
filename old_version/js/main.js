@@ -2,9 +2,9 @@
 
 function endButton() {
     alert("연습이 종료되었습니다. 메인화면으로 돌아갑니다. \n결과는 아래 세션 키를 사용하여 1~2분 내로 확인할 수 있습니다.\n세션키: " + sessionkey);
-    // 비동기식으로 0.0.0.0:9000/function/pose/{sessionkey}를 get 방식으로 호출
+    // 비동기식으로 43.200.201.188:9000/function/pose/{sessionkey}를 get 방식으로 호출
     $.ajax({
-        url: "http://0.0.0.0:9000/function/pose/" + sessionkey,
+        url: "http://43.200.201.188:9000/function/pose/" + sessionkey,
         type: "GET",
         dataType: "json",
         success: function (data) {

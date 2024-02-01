@@ -17,7 +17,7 @@ export const Logout = () => {
 }
 
 export const authenticate = (token) => axios.create({
-    baseURL: 'http://0.0.0.0:9000',
+    baseURL: 'http://43.200.201.188:9000',
     headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,

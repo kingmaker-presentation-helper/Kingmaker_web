@@ -22,7 +22,7 @@
     async function updateVideo() {
         let data;
         try {
-            const response = await fetch(`http://0.0.0.0:9000/data/download/video/${sessionkey}?session_key=${sessionkey}`);
+            const response = await fetch(`http://43.200.201.188:9000/data/download/video/${sessionkey}?session_key=${sessionkey}`);
             data = await response.blob(); // Blob 객체로 변환
         } catch (error) {
             console.error('데이터를 가져오는데 실패했습니다.', error);

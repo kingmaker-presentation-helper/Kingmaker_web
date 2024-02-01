@@ -8,7 +8,7 @@ window.onload = async function() {
 
 async function updatePPT(){
     try {
-        const response = await fetch(`http://0.0.0.0:9000/function/ppt_img/${sessionkey}`);
+        const response = await fetch(`http://43.200.201.188:9000/function/ppt_img/${sessionkey}`);
         const imagesData = await response.json();
 
         console.log('imagesData: ',imagesData);

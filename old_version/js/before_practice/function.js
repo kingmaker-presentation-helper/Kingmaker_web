@@ -6,7 +6,7 @@
     async function getSessionKey() {
         try{
             const response = await $.ajax({
-                url:"http://0.0.0.0:9000/function/sessionkey",
+                url:"http://43.200.201.188:9000/function/sessionkey",
                 type:"GET",
                 dataType:"json",
             });
@@ -126,7 +126,7 @@
         console.log("sessionkey formdata append: ", sessionkey);
     
         $.ajax({
-            url: 'http://0.0.0.0:9000/function/upload_ppt',
+            url: 'http://43.200.201.188:9000/function/upload_ppt',
             type: 'POST',
             data: formData,
             processData: false,

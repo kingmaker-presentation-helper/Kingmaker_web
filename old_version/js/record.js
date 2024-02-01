@@ -125,7 +125,7 @@
             
             location.href = "index.html";
             $.ajax({
-                    url: "http://0.0.0.0:9000/function/all/" + sessionkey,
+                    url: "http://43.200.201.188:9000/function/all/" + sessionkey,
                     type: "GET",
                     dataType: "json",
                     success: function (data) {
@@ -137,7 +137,7 @@
                 });
             if (mediaRecorder && mediaRecorder.state !== 'inactive') {
                 
-                // // 비동기식으로 0.0.0.0:9000/function/pose/{sessionkey}를 get 방식으로 호출
+                // // 비동기식으로 43.200.201.188:9000/function/pose/{sessionkey}를 get 방식으로 호출
             // Reset for the next recording
             combinedChunks = [];
         }
@@ -192,7 +192,7 @@
         
             $.ajax({
                 type: 'POST',
-                url: 'http://0.0.0.0:9000/function/audio/',
+                url: 'http://43.200.201.188:9000/function/audio/',
                 data: formData,
                 processData: false,
                 contentType: false,
@@ -231,7 +231,7 @@
                         // Send the image data to the server using AJAX
                         $.ajax({
                             type: "POST",
-                            url: "http://0.0.0.0:9000/function/files/",
+                            url: "http://43.200.201.188:9000/function/files/",
                             data: formData,
                             processData: false,
                             contentType: false,
