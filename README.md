@@ -39,5 +39,6 @@ Refer to the [wiki page](https://github.com/kingmaker-presentation-helper/Kingma
 1. 김세중 rlatpwnd0049@naver.com
 2. 송윤수 harry7292@gachon.ac.kr
 3. 이지해 haeye2014@gachon.ac.kr
+4. 박예진 dpwls228@naver.com
 
 ## Thank you
